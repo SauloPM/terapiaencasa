@@ -37,10 +37,13 @@ $menuItems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
             </ul>
         </nav>
         
-        <img class="logo" src="<?php echo get_template_directory_uri(); ?>-child/img/logo.png">
+        <!-- Logo -->
+        <img class="logo" src="<?php echo get_template_directory_uri(); ?>-child/img/casa.svg">
 
+        <!-- Título -->
         <h1 class="titulo">Terapia en casa</h1>
 
+        <!-- Nubes -->
         <div class="nubes">
             <img class="nube" src="<?php echo get_template_directory_uri(); ?>-child/img/nube1.png">
             <img class="nube" src="<?php echo get_template_directory_uri(); ?>-child/img/nube2.png">
@@ -59,9 +62,17 @@ $menuItems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
         <h2 class="titulo-seccion">Quiénes somos</h2>
         <hr>
 
-        <p class="margin-bottom-35">
+        <p>
             Terapia en casa es un centro de psicología online y nace de una realidad: hay cientos de personas como tú a las que les gustaría recibir terapia psicológica pero no saben dónde acudir. Otras no se sienten cómodas asistiendo a una consulta que les resulte poco cómoda o impersonal, o simplemente no tienen a un profesional cercano o de habla hispana en su ciudad. Nuestra vocación es ayudar a la gente como tú y por eso te queremos facilitar la posibilidad de disfrutar de todos los beneficios de la psicoterapia con la comodidad que implica hacerlo desde tu casa y a un precio asequible.
         </p>
+
+        <div class="video">
+            <div class="play">
+                <div class="flecha"></div>
+            </div>
+        </div>
+
+        <!-- <iframe src="https://www.youtube.com/embed/d6Lp48o64mo" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
         <p>
             En Terapia en casa ofrecemos psicología online con un trato personal, cercano y honesto; preocupándonos en todo momento por tus emociones, teniendo en cuenta que lo más importante es ayudarte a entender lo que te ocurre y darte las herramientas para sentirte mejor, pudiendo disfrutar de todos los beneficios de la psicoterapia desde tu hogar y a un precio asequible.
@@ -109,16 +120,10 @@ de terapia online es gratuita</span>
 
     <section>
 
-        <h2 class="titulo-seccion">Ventajas de la terapia online</h2>
-
-        <p class="">
-            Trato personal, cercano y honesto. La primera sesión es GRATIS. Ahorro de tiempo y dinero. Sin barreras geográficas, desde la comodidad e intimidad de tu casa. 
-        </p>
-
-        <h2 class="titulo-seccion">¿Cómo lo hacemos?</h2>
+        <h2 class="titulo-seccion">Procedimiento</h2>
 
         <p class="margin-bottom-35">
-            Es muy sencillo. Nuestras sesiones de psicología online se realizan a través de una videoconferencia vía Skype u otro medio digital y seguro que nos quieras proponer. Solamente necesitarás tener un ordenador, móvil o tablet que disponga de cámara y conexión a internet. Tras recibir tu solicitud, estudiar tu situación y comprobar que cumples con los requisitos, concertaremos una cita contigo con el miembro de nuestro equipo de psicólogos que más se adapte a tus necesidades.
+            Las ventajas que proporciona la terapia online son ahorro de tiempo y dinero, trato personal, cercano y honesto, todo sin barreras geográficas, desde la comodidad e intimidad de tu casa. ¿Cómo lo hacemos? Es muy sencillo. Nuestras sesiones de psicología online se realizan a través de una videoconferencia vía Skype u otro medio digital y seguro que nos quieras proponer. Solamente necesitarás tener un ordenador, móvil o tablet que disponga de cámara y conexión a internet. Tras recibir tu solicitud, estudiar tu situación y comprobar que cumples con los requisitos, concertaremos una cita contigo con el miembro de nuestro equipo de psicólogos que más se adapte a tus necesidades.
         </p>
 
         <a href="#" class="boton">Ampliar información sobre psicoterapia online</a>
