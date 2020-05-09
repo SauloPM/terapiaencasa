@@ -2,6 +2,7 @@
 Theme Name: Tema hijo
 Template: twentynineteen
 */
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
 @font-face {
@@ -68,13 +69,13 @@ p {
   margin: 150px auto;
   width: 100%;
   max-width: 1200px;
-  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 25;
 }
 
 .titulo-seccion {
-  color: #327d00;
+  color: #915f00;
   font-size: 40px;
   font-weight: bold;
   font-family: "Amatic SC", cursive;
@@ -95,14 +96,14 @@ p {
 }
 
 .boton {
-  color: #327d00;
+  color: #915f00;
   text-decoration: none;
-  border-bottom: 1px solid rgba(50, 125, 0, 0.25);
+  border-bottom: 1px solid rgba(145, 95, 0, 0.25);
   padding: 18px 45px;
   transition: 0.5s;
 }
 .boton:hover {
-  border-bottom-color: #327d00;
+  border-bottom-color: #915f00;
 }
 
 .margin-bottom-35 {
@@ -213,25 +214,30 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(img/bg/bg-callout1.jpg) fixed no-repeat center;
-  background-size: cover;
   border-top: 10px solid rgba(255, 255, 255, 0.5);
   border-bottom: 10px solid rgba(255, 255, 255, 0.5);
-  padding: 150px 50px;
+  padding: 75px 100px;
   position: relative;
 }
 .callout .texto {
-  color: white;
-  font-size: 40px;
-  font-family: "Amatic SC", cursive;
+  color: transparent;
+  font-size: 75px;
+  font-weight: lighter;
+  font-family: "Brittanian", cursive;
   text-align: center;
-  letter-spacing: 5px;
-  line-height: 55px;
+  text-transform: lowercase;
+  text-shadow: 0px 0px 1px white;
+  letter-spacing: 0px;
+  line-height: 75px;
+  white-space: pre;
   position: relative;
   z-index: 50;
 }
-.callout .texto.subrayado {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+.callout .texto.tilde:after {
+  content: ",";
+  position: absolute;
+  bottom: 35px;
+  right: 30px;
 }
 .callout:after {
   content: "";
@@ -242,6 +248,18 @@ p {
   right: 0;
   bottom: 0;
   z-index: 25;
+}
+.callout.bg-callout-1 {
+  background: url(img/bg/bg-callout1.jpg) fixed no-repeat center;
+  background-size: cover;
+}
+.callout.bg-callout-2 {
+  background: url(img/bg/bg-callout2.jpg) fixed no-repeat center;
+  background-size: cover;
+}
+.callout.bg-callout-3 {
+  background: url(img/bg/bg-callout3.jpg) fixed no-repeat center;
+  background-size: cover;
 }
 
 /*# sourceMappingURL=style.css.map */
