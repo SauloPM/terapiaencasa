@@ -23,30 +23,34 @@
 
         <header class="portada">
 
-        <!-- Menú de navegación -->
-        <?php
-            wp_nav_menu(
+            <!-- Menú de navegación -->
+            <?php
+                wp_nav_menu(
 
-                array(
-                    'theme_location' => 'header-menu',
-                    'container_id' => 'menu',
-                    'menu_class' => 'items',
-                )
-            );
-        ?>
+                    array(
+                        'theme_location' => 'header-menu',
+                        'container_id' => 'menu',
+                        'menu_class' => 'items',
+                    )
+                );
+            ?>
 
-        <!-- Logo -->
-        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg">
+            <!-- Logo -->
+            <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg">
 
-        <!-- Título -->
-        <h1 class="titulo"><?php the_title(); ?></h1>
+            <!-- Título -->
+            <h1 class="titulo"><?php the_title(); ?></h1>
 
-        <!-- Nubes -->
-        <div class="nubes">
-            <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube1.png">
-            <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube2.png">
-            <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube3.png">
-            <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube4.png">
-            <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube5.png">
-        </div>
+            <!-- Enlaces a RRSS -->
+            <?php dynamic_sidebar( 'portada' ); ?>
+
+            <!-- Nubes -->
+            <div class="nubes">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube1.png">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube2.png">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube3.png">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube4.png">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube5.png">
+            </div>
+
         </header>
