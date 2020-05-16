@@ -66,6 +66,19 @@ function desactivar_widgets_de_wordpress() {
 
 add_action( 'widgets_init', 'desactivar_widgets_de_wordpress', 11 );
 
+// ─────────────── //
+//     FUENTES     //
+// ─────────────── //
+
+function cargar_fuentes() {
+
+    // Indie Flower
+    wp_register_style( 'IndieFlower', 'https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap' );
+    wp_enqueue_style( 'IndieFlower' );
+}
+
+add_action( 'wp_enqueue_scripts', 'cargar_fuentes' );
+
 // ─────────── //
 //     CSS     //
 // ─────────── //

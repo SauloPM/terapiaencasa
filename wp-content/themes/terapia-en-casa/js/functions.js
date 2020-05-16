@@ -23,14 +23,27 @@ $( window ).on( 'load', function() {
 	// ─────────────────── //
 	
     // Configuracióm
-    $( '.owl-carousel' ).owlCarousel({
-        center: true,
-        dots: false,
+
+    var testimonios = $( '.owl-carousel' );
+
+    testimonios.owlCarousel({
         items: 1,
-		loop: true,
-		nav: true,
         margin: 0,
+        center: true,
+		loop: true,
 		autoplay: true,
-        autoplayHoverPause: true
+        autoplayHoverPause: true,
+		nav: false,
+        dots: false,
     });
+
+    // Siguiente testimonio
+    $( document ).on( 'click', '.flecha-derecha', function() {
+        testimonios.trigger( 'next.owl.carousel', [1000] );
+    })
+    
+    // Anterior testimonio
+    $( document ).on( 'click', '.flecha-izquierda', function() {
+        testimonios.trigger( 'prev.owl.carousel', [1000] );
+    })
 });

@@ -10,7 +10,7 @@
 
 // Colores
 
-$primario: rgb(145,95,0);
+$primario: rgb(175,155,70);
 
 // Fuentes
 
@@ -420,14 +420,49 @@ h2 {
     background-size: cover;
     border-top: 10px solid rgba(255,255,255,.5);
     border-bottom: 10px solid rgba(255,255,255,.5);
-    padding: 75px 100px;
+    padding: 100px 75px;
     position: relative;
+
+    .owl-stage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
     .item {
         color: white;
+        font-size: 25px;
+        font-family: 'Indie Flower', sans-serif;
+        letter-spacing: 1px;
+        line-height: 40px;
         text-align: justify;  
         -moz-text-align-last: center; // Mozilla Firefox
             text-align-last: center;
+        margin: 0 25px;
+    }
+
+    // Navegación
+
+    .flechas .flecha {
+        color: rgba(255,255,255,.25);
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .5s;
+        cursor: pointer;
+
+        &.flecha-izquierda {
+            left: 35px;
+        }
+    
+        &.flecha-derecha {
+            right: 35px;
+        }
+
+        &:hover {
+            color: white;
+        }
     }
 }
 

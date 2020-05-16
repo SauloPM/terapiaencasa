@@ -16,7 +16,7 @@
 }
 ::selection {
   color: white;
-  background: #915f00;
+  background: #af9b46;
 }
 
 ::-webkit-scrollbar {
@@ -94,7 +94,7 @@ p {
 }
 
 h2 {
-  color: #915f00;
+  color: #af9b46;
   font-size: 40px;
   font-weight: bold;
   font-family: "Amatic SC", cursive;
@@ -115,14 +115,14 @@ h2 + hr {
 }
 
 .boton {
-  color: #915f00;
+  color: #af9b46;
   text-decoration: none;
-  border-bottom: 1px solid rgba(145, 95, 0, 0.25);
+  border-bottom: 1px solid rgba(175, 155, 70, 0.25);
   padding: 18px 45px;
   transition: 0.5s;
 }
 .boton:hover {
-  border-bottom-color: #915f00;
+  border-bottom-color: #af9b46;
 }
 
 .margin-bottom-35 {
@@ -352,14 +352,42 @@ h2 + hr {
   background-size: cover;
   border-top: 10px solid rgba(255, 255, 255, 0.5);
   border-bottom: 10px solid rgba(255, 255, 255, 0.5);
-  padding: 75px 100px;
+  padding: 100px 75px;
   position: relative;
+}
+.testimonios .owl-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .testimonios .item {
   color: white;
+  font-size: 25px;
+  font-family: "Indie Flower", sans-serif;
+  letter-spacing: 1px;
+  line-height: 40px;
   text-align: justify;
   -moz-text-align-last: center;
   text-align-last: center;
+  margin: 0 25px;
+}
+.testimonios .flechas .flecha {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.testimonios .flechas .flecha.flecha-izquierda {
+  left: 35px;
+}
+.testimonios .flechas .flecha.flecha-derecha {
+  right: 35px;
+}
+.testimonios .flechas .flecha:hover {
+  color: white;
 }
 
 .fondo-blanco {
@@ -378,7 +406,7 @@ h2 + hr {
   display: flex;
 }
 .fondo-blanco .spinner .punto {
-  background: #915f00;
+  background: #af9b46;
   border-radius: 50%;
   margin: 0 2.5px;
   width: 35px;

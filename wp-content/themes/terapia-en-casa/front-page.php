@@ -114,6 +114,11 @@
             "Gracias por un año de terapia en la que pude superar con tu ayuda mi depresión y mis traumas. Un buenísimo profesional y una mejor persona. De todos los psicólogos anteriores (sin ofender a nadie) me quedo con él sin duda."
         </div>
     </div>
+
+    <div class="flechas">
+        <i class="flecha flecha-derecha fa fa-angle-right"></i>
+        <i class="flecha flecha-izquierda fa fa-angle-left"></i>
+    </div>
 </aside>
 
 <!-- ─────────────────── -->
