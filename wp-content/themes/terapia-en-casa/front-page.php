@@ -90,29 +90,40 @@
 <!--     TESTIMONIOS     -->
 <!-- ─────────────────── -->
 
+<?php
+
+    $items = get_posts(
+
+        array(
+            'post_per_page' => -1,
+            'post_type' => 'testimonios',
+            'category_name' => $type
+        )
+    );
+
+    $catObj = get_category_by_slug( $type );
+    $parent = get_the_category_by_ID( $catObj->category_parent );
+?>
+
+<?php if ( $items ): ?>
+
 <aside class="testimonios">
     <div class="carrusel owl-carousel owl-theme owl-height">
+        <?php foreach ( $items as $item ) : ?>
         <div class="item">
-            "Nuestra experiencia con Rubén ha sido muy positiva. A pesar de solo llevar unos meses con él ha conseguido que nuestra hija mejore en aspectos en los que llevaba tiempo estancada. Además, es una persona muy cercana."
+
+            <?php
+                
+            $campos = get_fields( $item->ID );
+
+            setup_postdata( $item );
+            echo $campos["testimonio"];
+            wp_reset_postdata();
+
+            ?>
+
         </div>
-        <div class="item">
-            "Rubén me guió en el proceso de cerrar las heridas del pasado. Gracias por la dedicación y por la experiencia, haces un trabajo muy bonito y lo haces muy bien."
-        </div>
-        <div class="item">
-            "Las sesiones me han venido muy bien para aprender a afrontar diferentes situaciones que antes me llevaban a exigirme perfección y que me causaban mucha ansiedad. Estoy aprendiendo a tener una percepción menos catastrofista y más realista de mis experiencias, de modo que puedo afrontar mucho mejor las diferentes situaciones sin perder el equilibrio."
-        </div>
-        <div class="item">
-            "Gracias, Rubén por estos años de terapia en dos fases en los que me has ayudado ha cambiar el aspecto más fundamental de mi vida, partiendo de una situacion muy complicada. Sin ti no lo hubiera conseguido."
-        </div>
-        <div class="item">
-            "Me ha ido genial. Hemos hablado solo durante media hora, pero ya me ha hecho sentirme aliviada porque sé lo que me pasa y sé que él me va a ayudar."
-        </div>
-        <div class="item">
-            "Su trabajo es realmente sorprendente. Habíamos trabajado con muchos psicólogos y psiquiatras, pero Rubén, además de sus conocimientos profesionales, posee una imaginación práctica y una humanidad fuera de lo común."
-        </div>
-        <div class="item">
-            "Gracias por un año de terapia en la que pude superar con tu ayuda mi depresión y mis traumas. Un buenísimo profesional y una mejor persona. De todos los psicólogos anteriores (sin ofender a nadie) me quedo con él sin duda."
-        </div>
+        <?php endforeach; ?>
     </div>
 
     <div class="flechas">
@@ -120,6 +131,8 @@
         <i class="flecha flecha-izquierda fa fa-angle-left"></i>
     </div>
 </aside>
+
+<?php endif; ?>
 
 <!-- ─────────────────── -->
 <!--     INFORMACIÓN     -->
