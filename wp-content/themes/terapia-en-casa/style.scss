@@ -11,6 +11,7 @@
 // Colores
 
 $primario: rgb(175,155,70);
+$gris-claro: rgb(200,200,200);
 
 // Fuentes
 
@@ -46,9 +47,9 @@ $primario: rgb(175,155,70);
 
 // Placeholder
 
-::-webkit-input-placeholder { color: lightgray; transition: .5s; }
-     :-ms-input-placeholder { color: lightgray; transition: .5s; }
-              ::placeholder { color: lightgray; transition: .5s; }
+::-webkit-input-placeholder { color: $gris-claro; transition: .5s; }
+     :-ms-input-placeholder { color: $gris-claro; transition: .5s; }
+              ::placeholder { color: $gris-claro; transition: .5s; }
 
 input:focus::-webkit-input-placeholder { color: transparent }
      input:focus:-ms-input-placeholder { color: transparent }
@@ -515,6 +516,7 @@ a.boton {
 // ────────────── //
 
 #contacto {
+    padding-bottom: 0;
 
     .formulario {
         display: flex;
@@ -524,7 +526,7 @@ a.boton {
         }
 
         .entrada {
-            border: 1px solid lightgray;
+            border: 1px solid $gris-claro;
             margin: 0 0 25px;
             position: relative;
 
@@ -613,11 +615,73 @@ a.boton {
     }
 }
 
-.copyright {
-    text-align: center;
-    padding: 0 0 10px;
-    position: relative;
-    z-index: 100;
+#footer {
+
+    .redes-sociales {
+        display: flex;
+        justify-content: center;
+        margin: 35px 0;
+
+        .red-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid $gris-claro;
+            border-radius: 15px;
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            transition: .5s;
+
+            .icono {
+                color: $gris-claro;
+                transition: .5s;
+            }
+
+            &:hover .icono {
+                color: white;
+            }
+
+            &.facebook:hover  { background: #3b5998; border-color: #3b5998 }
+            &.instagram:hover { background: #E1306C; border-color: #E1306C }
+            &.twitter:hover   { background: #00acee; border-color: #00acee }
+            &.youtube:hover   { background: #c4302b; border-color: #c4302b }
+            &.linkedin:hover  { background: #004b7c; border-color: #004b7c }
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .legal {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid $gris-claro;
+        padding: 18px 200px;
+
+        .enlace,
+        .copyright {
+            color: $gris-claro;
+            font-size: 15px;
+            font-weight: normal;
+            text-decoration: none;
+            line-height: 30px;
+        }
+        
+        .enlace {
+            transition: .5s;
+
+            &:hover {
+                color: $primario;
+            }
+
+            &:first-child {
+                margin-right: 25px;
+            }
+        }
+    }
 }
 
 // ─────────────── //

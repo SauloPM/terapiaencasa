@@ -13,10 +13,21 @@
 
         <footer id="footer">
 
+            <!-- Enlaces a RRSS -->
+            <?php dynamic_sidebar( 'pie-de-pagina' ); ?>
+
+            <!-- Legal -->
+
+            <div class="legal">
+                <div class="copyright">&copy; Terapia en casa <?php echo date("Y"); ?></div>
+                <div>
+                    <a href="" class="enlace">Política de privacidad</a>
+                    <a href="" class="enlace">Política de cookies</a>
+                </div>
+            </div>
+
         </footer>
     </div>
-
-    <div class="copyright">&copy; Terapia en casa <?php echo date("Y"); ?></div>
 
     <?php wp_footer(); ?>
 

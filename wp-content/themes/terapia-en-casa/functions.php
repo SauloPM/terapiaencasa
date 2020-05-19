@@ -35,6 +35,19 @@ function crear_areas_de_widgets() {
             'after_title'   => '',
         )
     );
+
+    // Área de widgets 1 (Pie de página)
+    register_sidebar(
+        array (
+            'id'            => 'pie-de-pagina',
+            'name'          => __( 'Pie de página', 'textdomain' ),
+            'description'   => __( 'Área de widgets para situar los enlaces a RSS e información de contacto', 'textdomain' ),
+            'before_widget' => '',
+            'after_widget'  => '',
+            'before_title'  => '',
+            'after_title'   => '',
+        )
+    );
 }
 
 add_action( 'widgets_init', 'crear_areas_de_widgets' );

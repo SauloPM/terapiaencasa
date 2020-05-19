@@ -33,17 +33,17 @@
 }
 
 ::-webkit-input-placeholder {
-  color: lightgray;
+  color: #c8c8c8;
   transition: 0.5s;
 }
 
 :-ms-input-placeholder {
-  color: lightgray;
+  color: #c8c8c8;
   transition: 0.5s;
 }
 
 ::placeholder {
-  color: lightgray;
+  color: #c8c8c8;
   transition: 0.5s;
 }
 
@@ -455,6 +455,9 @@ a.boton:hover {
   color: white;
 }
 
+#contacto {
+  padding-bottom: 0;
+}
 #contacto .formulario {
   display: flex;
 }
@@ -462,7 +465,7 @@ a.boton:hover {
   width: 100%;
 }
 #contacto .formulario .entrada {
-  border: 1px solid lightgray;
+  border: 1px solid #c8c8c8;
   margin: 0 0 25px;
   position: relative;
 }
@@ -530,11 +533,75 @@ a.boton:hover {
   margin: 0;
 }
 
-.copyright {
-  text-align: center;
-  padding: 0 0 10px;
-  position: relative;
-  z-index: 100;
+#footer .redes-sociales {
+  display: flex;
+  justify-content: center;
+  margin: 35px 0;
+}
+#footer .redes-sociales .red-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #c8c8c8;
+  border-radius: 15px;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  transition: 0.5s;
+}
+#footer .redes-sociales .red-social .icono {
+  color: #c8c8c8;
+  transition: 0.5s;
+}
+#footer .redes-sociales .red-social:hover .icono {
+  color: white;
+}
+#footer .redes-sociales .red-social.facebook:hover {
+  background: #3b5998;
+  border-color: #3b5998;
+}
+#footer .redes-sociales .red-social.instagram:hover {
+  background: #E1306C;
+  border-color: #E1306C;
+}
+#footer .redes-sociales .red-social.twitter:hover {
+  background: #00acee;
+  border-color: #00acee;
+}
+#footer .redes-sociales .red-social.youtube:hover {
+  background: #c4302b;
+  border-color: #c4302b;
+}
+#footer .redes-sociales .red-social.linkedin:hover {
+  background: #004b7c;
+  border-color: #004b7c;
+}
+#footer .redes-sociales .red-social:last-child {
+  margin: 0;
+}
+#footer .legal {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #c8c8c8;
+  padding: 18px 200px;
+}
+#footer .legal .enlace,
+#footer .legal .copyright {
+  color: #c8c8c8;
+  font-size: 15px;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 30px;
+}
+#footer .legal .enlace {
+  transition: 0.5s;
+}
+#footer .legal .enlace:hover {
+  color: #af9b46;
+}
+#footer .legal .enlace:first-child {
+  margin-right: 25px;
 }
 
 .fondo-blanco {
