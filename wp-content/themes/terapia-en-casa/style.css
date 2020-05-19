@@ -604,6 +604,42 @@ a.boton:hover {
   margin-right: 25px;
 }
 
+#cookie-law-info-bar {
+  color: #323232 !important;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: "Roboto", sans-serif !important;
+  line-height: 30px !important;
+  border-top: 1px solid #c8c8c8;
+  box-shadow: none;
+  padding: 25px 10px;
+}
+#cookie-law-info-bar .cli-plugin-main-link {
+  color: #af9b46 !important;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  line-height: 30px;
+  transition: 0.5s;
+}
+#cookie-law-info-bar .cli-plugin-main-link:hover {
+  opacity: 0.75;
+}
+#cookie-law-info-bar .cookie_action_close_header {
+  color: #c8c8c8 !important;
+  font-size: 22px;
+  outline: none;
+  line-height: 12px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: 0.5s;
+}
+#cookie-law-info-bar .cookie_action_close_header:hover {
+  color: #af9b46;
+}
+
 .fondo-blanco {
   display: flex;
   align-items: center;
