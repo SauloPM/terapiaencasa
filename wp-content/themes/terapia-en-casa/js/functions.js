@@ -18,6 +18,8 @@ $( window ).on( 'load', function() {
         });
     }
 
+    $( '.entrada input, .entrada textarea' ).attr( 'autocomplete', 'off' );
+
 	// ─────────────────── //
     //     TESTIMONIOS     //
 	// ─────────────────── //

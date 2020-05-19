@@ -87,6 +87,22 @@
 </section>
 
 <!-- ─────────────────── -->
+<!--     INFORMACIÓN     -->
+<!-- ─────────────────── -->
+
+<section>
+
+    <h2 class="titulo-seccion">Pasos a seguir</h2>
+
+    <p class="margin-bottom-35">
+        Contacta con nosotros sin compromiso y dinos en qué te podemos ayudarte. Te orientaremos en la situación en la que te encuentres y concertaremos una primera cita gratuita. El psicólogo asignado acordará contigo una cita para tu sesión de psicoterapia online. Puedes elegir al profesional que tú quieras si tienes alguna preferencia personal. Este valorará tu situación y en caso de ser necesaria la continuación del proceso terapéutico, te explicará las distintas formas de pago y los tiempos para realizarlos. El día y hora señalados nos conectaremos contigo de forma puntual y procederemos a realizar tu terapia psicológica.
+    </p>
+
+    <a href="#" class="boton">Recuerda que la primera sesión es gratuita</a>
+
+</section>
+
+<!-- ─────────────────── -->
 <!--     TESTIMONIOS     -->
 <!-- ─────────────────── -->
 
@@ -108,6 +124,7 @@
 <?php if ( $items ): ?>
 
 <aside class="testimonios">
+
     <div class="carrusel owl-carousel owl-theme owl-height">
         <?php foreach ( $items as $item ) : ?>
         <div class="item">
@@ -133,21 +150,5 @@
 </aside>
 
 <?php endif; ?>
-
-<!-- ─────────────────── -->
-<!--     INFORMACIÓN     -->
-<!-- ─────────────────── -->
-
-<section>
-
-    <h2 class="titulo-seccion">Pasos a seguir</h2>
-
-    <p class="margin-bottom-35">
-        Contacta con nosotros sin compromiso y dinos en qué te podemos ayudarte. Te orientaremos en la situación en la que te encuentres y concertaremos una primera cita gratuita. El psicólogo asignado acordará contigo una cita para tu sesión de psicoterapia online. Puedes elegir al profesional que tú quieras si tienes alguna preferencia personal. Este valorará tu situación y en caso de ser necesaria la continuación del proceso terapéutico, te explicará las distintas formas de pago y los tiempos para realizarlos. El día y hora señalados nos conectaremos contigo de forma puntual y procederemos a realizar tu terapia psicológica.
-    </p>
-
-    <a href="#" class="boton">Recuerda que la primera sesión es gratuita</a>
-
-</section>
 
 <?php get_footer(); ?>
