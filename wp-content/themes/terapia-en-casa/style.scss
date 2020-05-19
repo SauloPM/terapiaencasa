@@ -689,7 +689,6 @@ a.boton {
 // ─────────────── //
 
 #cookie-law-info-bar {
-    color: rgb(50,50,50) !important;
     font-size: 15px;
     font-weight: normal;
     font-family: 'Roboto', sans-serif !important;
@@ -701,7 +700,6 @@ a.boton {
     // Enlace a la política de cookies
 
     .cli-plugin-main-link {
-        color: $primario !important;
         font-size: 15px;
         font-weight: normal;
         font-family: 'Roboto', sans-serif;
@@ -717,7 +715,6 @@ a.boton {
     // Botón de cierre
 
     .cookie_action_close_header {
-        color: $gris-claro !important;
         font-size: 22px;
         outline: none;
         line-height: 12px;
@@ -725,9 +722,10 @@ a.boton {
         top: 10px;
         right: 10px;
         transition: .5s;
+        cursor: pointer;
 
         &:hover {
-            color: $primario;
+            color: $primario !important;
         }
     }
 }

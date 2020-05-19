@@ -605,7 +605,6 @@ a.boton:hover {
 }
 
 #cookie-law-info-bar {
-  color: #323232 !important;
   font-size: 15px;
   font-weight: normal;
   font-family: "Roboto", sans-serif !important;
@@ -615,7 +614,6 @@ a.boton:hover {
   padding: 25px 10px;
 }
 #cookie-law-info-bar .cli-plugin-main-link {
-  color: #af9b46 !important;
   font-size: 15px;
   font-weight: normal;
   font-family: "Roboto", sans-serif;
@@ -627,7 +625,6 @@ a.boton:hover {
   opacity: 0.75;
 }
 #cookie-law-info-bar .cookie_action_close_header {
-  color: #c8c8c8 !important;
   font-size: 22px;
   outline: none;
   line-height: 12px;
@@ -635,9 +632,10 @@ a.boton:hover {
   top: 10px;
   right: 10px;
   transition: 0.5s;
+  cursor: pointer;
 }
 #cookie-law-info-bar .cookie_action_close_header:hover {
-  color: #af9b46;
+  color: #af9b46 !important;
 }
 
 .fondo-blanco {

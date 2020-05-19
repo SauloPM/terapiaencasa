@@ -18,7 +18,12 @@ $( window ).on( 'load', function() {
         });
     }
 
-    $( '.entrada input, .entrada textarea' ).attr( 'autocomplete', 'off' );
+    // ─────────────────── //
+    //     TESTIMONIOS     //
+	// ─────────────────── //
+
+    // Evitar el autocompletado
+    $( '.entrada input' ).attr( 'autocomplete', 'off' );
 
 	// ─────────────────── //
     //     TESTIMONIOS     //
