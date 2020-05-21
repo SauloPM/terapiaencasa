@@ -8,19 +8,41 @@ $( window ).on( 'load', function() {
 
     // Spinner hidding
     function hideSpinner () {
-        $( '.spinner' ).fadeOut( 500, function () {
+        $( '.spinner' ).fadeOut( 250, function () {
 
-            $( '.fondo-blanco' ).delay( 500 ).fadeOut( 500 );
+            $( '.fondo-blanco' ).css( 'opacity', '0' );
 
             setTimeout( function () {
+                $( '.fondo-blanco' ).css( 'display', 'none' );
                 $( 'body' ).css( 'overflow', 'visible' );
-            }, 500);
+            }, 250);
         });
     }
 
-    // ─────────────────── //
-    //     TESTIMONIOS     //
-	// ─────────────────── //
+    // ────────────────── //
+    //     NAVEGACIÓN     //
+	// ────────────────── //
+
+    $( document ).on( 'click', '.menu-item a', function( evento ) {
+        
+        evento.preventDefault();
+
+        var target = $( this ).attr( 'href' );
+        
+        $( '.fondo-blanco' ).css( 'display', 'flex' );
+
+        setTimeout(() => {
+            $( '.fondo-blanco' ).css( 'opacity', '1' );
+        }, 10);
+
+        setTimeout(() => {
+            location.href = target;
+        }, 250);
+    });
+
+    // ──────────────── //
+    //     CONTACTO     //
+	// ──────────────── //
 
     // Evitar el autocompletado
     $( '.entrada input' ).attr( 'autocomplete', 'off' );
