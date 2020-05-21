@@ -39,7 +39,7 @@
             <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg">
 
             <!-- Título -->
-            <h1 class="titulo"><?php the_title(); ?></h1>
+            <h1 class="titulo">Terapia en casa</h1>
 
             <!-- Enlaces a RRSS -->
             <?php dynamic_sidebar( 'portada' ); ?>
