@@ -76,6 +76,7 @@ body {
     background-attachment: fixed;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 
     &:after {
         content: '';
@@ -96,21 +97,19 @@ section {
     padding: 100px 200px;
 }
 
-p {
+p,
+li {
     color: rgb(50,50,50);
     font-size: 16px;
     font-weight: normal;
     text-align: justify;  
-    -moz-text-align-last: center; // Mozilla Firefox
-         text-align-last: center;
     line-height: 30px;
     margin: 0;
 }
 
-// Eliminar
-#masthead,
-.skip-link.screen-reader-text {
-    display: none;
+p {
+    -moz-text-align-last: center; // Mozilla Firefox
+         text-align-last: center;
 }
 
 .contenedor {
@@ -511,9 +510,9 @@ a.boton {
     }
 }
 
-// ────────────── //
-//     FOOTER     //
-// ────────────── //
+// ──────────────── //
+//     CONTACTO     //
+// ──────────────── //
 
 #contacto {
     padding-bottom: 0;
@@ -613,9 +612,6 @@ a.boton {
         line-height: 25px;
         margin: 0;
     }
-}
-
-#footer {
 
     .redes-sociales {
         display: flex;
@@ -654,32 +650,85 @@ a.boton {
             }
         }
     }
+}
+
+// ────────────── //
+//     FOOTER     //
+// ────────────── //
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $gris-claro;
+    padding: 18px 200px;
+
+    .copyright,
+    .legal .menu-item a {
+        color: $gris-claro;
+        font-size: 15px;
+        font-weight: normal;
+        text-decoration: none;
+        line-height: 30px;
+    }
 
     .legal {
         display: flex;
-        justify-content: space-between;
-        border-top: 1px solid $gris-claro;
-        padding: 18px 200px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
 
-        .enlace,
-        .copyright {
-            color: $gris-claro;
-            font-size: 15px;
-            font-weight: normal;
-            text-decoration: none;
-            line-height: 30px;
-        }
-        
-        .enlace {
+        .menu-item a {
+
             transition: .5s;
-
+        
             &:hover {
                 color: $primario;
             }
-
+        
             &:first-child {
                 margin-right: 25px;
             }
+        }
+    }
+}
+
+// ───────────── //
+//     LEGAL     //
+// ───────────── //
+
+#legal {
+
+    h3 {
+        margin-right: auto;
+        margin-bottom: 25px;
+    }
+
+    p {
+        text-align: justify;
+        -moz-text-align-last: left;
+             text-align-last: left;
+        margin-right: auto;
+        margin-bottom: 25px;
+    }
+
+    ul {
+        list-style-type: circle;
+        padding: 0 0 0 50px;
+        margin: 0;
+        margin-right: auto;
+
+        li a {
+            color: $primario;
+            text-decoration: none;
+            transition: .5s;
+
+            &:hover {
+                opacity: .75;
+            }
+        }
+
+        li:last-child {
+            margin-bottom: 25px;
         }
     }
 }
@@ -691,7 +740,6 @@ a.boton {
 #cookie-law-info-bar {
     font-size: 15px;
     font-weight: normal;
-    font-family: 'Roboto', sans-serif !important;
     line-height: 30px !important;
     border-top: 1px solid $gris-claro;
     box-shadow: none;
@@ -702,7 +750,6 @@ a.boton {
     .cli-plugin-main-link {
         font-size: 15px;
         font-weight: normal;
-        font-family: 'Roboto', sans-serif;
         text-decoration: none;
         line-height: 30px;
         transition: .5s;
@@ -745,6 +792,8 @@ a.boton {
     right: 0;
     bottom: 0;
     z-index: 500;
+    opacity: 1;
+    transition: .25s;
 
     .spinner {
         display: flex;
