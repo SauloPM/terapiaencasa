@@ -1,5 +1,7 @@
 <?php
 
+show_admin_bar(false);
+
 // ──────────── //
 //     MENÚ     //
 // ──────────── //
@@ -36,12 +38,25 @@ function crear_areas_de_widgets() {
         )
     );
 
-    // Área de widgets 1 (Pie de página)
+    // Área de widgets 2 (Pie de página)
     register_sidebar(
         array (
             'id'            => 'pie-de-pagina',
             'name'          => __( 'Pie de página', 'textdomain' ),
             'description'   => __( 'Área de widgets para situar los enlaces a RSS e información de contacto', 'textdomain' ),
+            'before_widget' => '',
+            'after_widget'  => '',
+            'before_title'  => '',
+            'after_title'   => '',
+        )
+    );
+
+    // Área de widgets 3 (Página de inicio)
+    register_sidebar(
+        array (
+            'id'            => 'pagina-de-inicio',
+            'name'          => __( 'Página de inicio', 'textdomain' ),
+            'description'   => __( 'Área de widgets para situar el contenido de la página de inicio', 'textdomain' ),
             'before_widget' => '',
             'after_widget'  => '',
             'before_title'  => '',
@@ -93,8 +108,8 @@ function cargar_fuentes() {
     wp_register_style( 'AmaticSC', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap' );
     wp_enqueue_style( 'AmaticSC' );
 
-    // Amatic SC
-    wp_register_style( 'Roboto', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' );
+    // Roboto
+    wp_register_style( 'Roboto', 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' );
     wp_enqueue_style( 'Roboto' );
 }
 
