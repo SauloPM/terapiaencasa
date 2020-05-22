@@ -66,29 +66,42 @@ $( window ).on( 'load', function() {
     });
 
     // No hacer nada al hacer clic en el botón si el usuario no ha aceptado la política de privacidad
-    $( document ).on( 'click', '#contacto .boton', function( evento ) {
+    $( document ).on( 'click', '#contacto .boton input[type="submit"]', function( evento ) {
 
         var boton = $( this );
-
-        if ( boton.hasClass( 'desactivado' ) ) {
-
+        
+        if ( boton.hasClass( 'desactivado' ) )
             evento.preventDefault();
-            
-        } else {
-
-            
-        }
+        else
+            mostrarNotificacion();
     });
 
     // Ocultar notificación
-    // $( document ).on( 'click', '.wpcf7-response-output', function() {
+    $( document ).on( 'click', '.wpcf7-response-output', function() {
+        ocultarNotificacion();
+    });
 
-    //     $( this ).css( 'opacity', '0' );
+    function mostrarNotificacion() {
 
-    //     setTimeout(() => {
-    //         $( this ).css( 'display', 'none' );
-    //     }, 500);
-    // });
+        var notificacion = $( '.wpcf7-response-output' );
+
+        notificacion.css( 'display', 'block' );
+
+        setTimeout(() => {
+            notificacion.css( 'opacity', '1' );
+        }, 500);
+    }
+
+    function ocultarNotificacion() {
+
+        var notificacion = $( '.wpcf7-response-output' );
+        
+        notificacion.css( 'opacity', '0' );
+
+        setTimeout(() => {
+            notificacion.css( 'display', 'none' );
+        }, 500);
+    }
 
 	// ─────────────────── //
     //     TESTIMONIOS     //
