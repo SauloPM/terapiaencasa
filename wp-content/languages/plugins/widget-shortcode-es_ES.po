@@ -1,0 +1,46 @@
+# Translation of Plugins - Widget Shortcode - Development (trunk) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Widget Shortcode - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-05-09 16:09:57+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Widget Shortcode - Development (trunk)\n"
+
+#: assets/block.js:27
+msgid "Widget"
+msgstr "Widget"
+
+#: includes/class-widget-shortcode-gutenberg.php:68
+msgid "Select the widget you want to show."
+msgstr "Selecciona que widget que quieres mostrar."
+
+#: includes/class-widget-shortcode.php:66
+msgid "This widget area is not displayed on frontend and can be used for [widget] shortcode."
+msgstr "Esta área de widgets no se muestra en la portada, puede usarse para crear un shortcode [widget]."
+
+#. Author of the plugin
+msgid "Hassan Derakhshandeh"
+msgstr "Hassan Derakhshandeh"
+
+#. Description of the plugin
+msgid "Output widgets using a simple shortcode."
+msgstr "Muestra widgets usando un sencillo shortcode."
+
+#. Plugin Name of the plugin
+#: includes/class-widget-shortcode-tinymce.php:41
+#: includes/class-widget-shortcode.php:65 assets/block.js:9
+msgid "Widget Shortcode"
+msgstr "Shortcode del widget"
+
+#: includes/class-widget-shortcode.php:81
+msgid "Please save this first."
+msgstr "Por favor, guarda primero."
+
+#: includes/class-widget-shortcode.php:81
+msgid "Shortcode"
+msgstr "Shortcode"
