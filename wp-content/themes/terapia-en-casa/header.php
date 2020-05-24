@@ -42,7 +42,7 @@
             <h1 class="titulo">Terapia en casa</h1>
 
             <!-- Enlaces a RRSS -->
-            <?php dynamic_sidebar( 'portada' ); ?>
+            <?php dynamic_sidebar( 'redes-sociales' ); ?>
 
             <!-- Nubes -->
             <div class="nubes">

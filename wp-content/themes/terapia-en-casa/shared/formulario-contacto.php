@@ -6,6 +6,6 @@
     <?php echo do_shortcode( '[contact-form-7 id="84" title="Formulario de contacto"]' ); ?>
 
     <!-- Enlaces a RRSS -->
-    <?php dynamic_sidebar( 'pie-de-pagina' ); ?>
+    <?php dynamic_sidebar( 'redes-sociales' ); ?>
 
 </section>
