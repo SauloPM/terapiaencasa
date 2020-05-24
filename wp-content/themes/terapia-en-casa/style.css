@@ -143,12 +143,12 @@ p.texto-centrado {
   text-align-last: center;
 }
 
-p a {
+p:not(.saber-mas) a {
   color: #af9b46;
   text-decoration: none;
   transition: 0.5s;
 }
-p a:hover {
+p:not(.saber-mas) a:hover {
   opacity: 0.75;
 }
 
@@ -165,7 +165,6 @@ p a:hover {
 h2 {
   color: #af9b46;
   font-size: 40px;
-  font-weight: bold;
   font-family: "Amatic SC", cursive;
   text-align: center;
   letter-spacing: 5px;
@@ -215,6 +214,10 @@ p.saber-mas a {
 }
 p.saber-mas a:hover {
   border-bottom-color: #af9b46;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
 }
 
 .margin-right-25 {
@@ -370,6 +373,15 @@ p.saber-mas a:hover {
   }
 }
 .video {
+  display: block;
+  box-shadow: 0 0 0 10px rgba(230, 230, 230, 0.5);
+  margin: 45px auto;
+  width: 498px;
+  height: 280px;
+  overflow: hidden;
+}
+
+.videoo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,7 +395,7 @@ p.saber-mas a:hover {
   transition: 0.5s;
   cursor: pointer;
 }
-.video .play {
+.videoo .play {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -393,7 +405,7 @@ p.saber-mas a:hover {
   height: 125px;
   transition: 0.5s;
 }
-.video .play .flecha {
+.videoo .play .flecha {
   border-top: 32px solid transparent;
   border-left: 50px solid rgba(255, 255, 255, 0.5);
   border-bottom: 32px solid transparent;
@@ -403,10 +415,10 @@ p.saber-mas a:hover {
   left: 8px;
   transition: 0.5s;
 }
-.video:hover .play {
+.videoo:hover .play {
   box-shadow: 0 0 0 10px white;
 }
-.video:hover .play .flecha {
+.videoo:hover .play .flecha {
   border-left-color: white;
 }
 
@@ -468,7 +480,6 @@ p.saber-mas a:hover {
   padding: 100px 75px;
   margin: 100px 0;
   position: relative;
-  overflow: hidden;
 }
 .testimonios:before {
   content: "";
@@ -489,17 +500,6 @@ p.saber-mas a:hover {
   z-index: 25;
   width: 100%;
   height: 10px;
-}
-.testimonios .video-fondo {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-}
-.testimonios .owl-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .testimonios .item {
   color: white;
@@ -656,7 +656,7 @@ p.saber-mas a:hover {
 #contacto .redes-sociales {
   display: flex;
   justify-content: center;
-  margin: 35px 0;
+  margin: 35px 0 0;
 }
 #contacto .redes-sociales .red-social {
   display: flex;
@@ -706,6 +706,7 @@ p.saber-mas a:hover {
   justify-content: space-between;
   border-top: 1px solid #c8c8c8;
   padding: 18px 200px;
+  margin-top: 100px;
 }
 #footer .copyright,
 #footer .legal .menu-item a {

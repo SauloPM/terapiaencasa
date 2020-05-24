@@ -149,7 +149,7 @@ p.texto-centrado {
          text-align-last: center;
 }
 
-p a {
+p:not(.saber-mas) a {
     color: $primario;
     text-decoration: none;
     transition: .5s;
@@ -172,7 +172,6 @@ p a {
 h2 {
     color: $primario;
     font-size: 40px;
-    font-weight: bold;
     font-family: 'Amatic SC', cursive;
     text-align: center;
     letter-spacing: 5px;
@@ -231,6 +230,10 @@ p.saber-mas {
 // ─────────────── //
 //     HELPERS     //
 // ─────────────── //
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
 
 .margin-right-25 {
     margin-right: 25px !important;
@@ -408,6 +411,15 @@ p.saber-mas {
 // ───────────── //
 
 .video {
+    display: block;
+    box-shadow: 0 0 0 10px rgba(230,230,230,.5);
+    margin: 45px auto;
+    width: 498px;
+    height: 280px;
+    overflow: hidden;
+}
+
+.videoo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -521,7 +533,6 @@ p.saber-mas {
     padding: 100px 75px;
     margin: 100px 0;
     position: relative;
-    overflow: hidden;
 
     &:before {
         content: '';
@@ -545,19 +556,6 @@ p.saber-mas {
         height: 10px;
     }
 
-    .video-fondo {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%)
-    }
-
-    .owl-stage {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
     .item {
         color: white;
         font-size: 25px;
@@ -755,7 +753,7 @@ p.saber-mas {
     .redes-sociales {
         display: flex;
         justify-content: center;
-        margin: 35px 0;
+        margin: 35px 0 0;
 
         .red-social {
             display: flex;
@@ -800,6 +798,7 @@ p.saber-mas {
     justify-content: space-between;
     border-top: 1px solid $gris-claro;
     padding: 18px 200px;
+    margin-top: 100px;
 
     .copyright,
     .legal .menu-item a {

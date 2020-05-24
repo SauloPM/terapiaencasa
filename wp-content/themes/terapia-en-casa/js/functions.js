@@ -1,20 +1,13 @@
 $( window ).on( 'load', function() {
 
-    $('#play-video').on('click', function(ev) {
-
-        $("#video")[0].src += "&autoplay=1";
-        ev.preventDefault();
-        
-    });
-
     // ─────────────── //
     //     SPINNER     //
     // ─────────────── //
 
-    hideSpinner();
+    ocultarSpinner();
 
-    // Spinner hidding
-    function hideSpinner () {
+    // Ocultar spinner
+    function ocultarSpinner () {
         $( '.spinner' ).fadeOut( 250, function () {
 
             $( '.fondo-blanco' ).css( 'opacity', '0' );
