@@ -10,10 +10,6 @@ Versión: 1.00
 
 */
 
-// ────────────── //
-//     PORTADA    //
-// ────────────── //
-
 class Widget_Redes_Sociales extends WP_Widget {
 
     // Constructor

@@ -28,35 +28,9 @@ function crear_areas_de_widgets() {
     // Área de widgets 1 (Portada)
     register_sidebar(
         array (
-            'id'            => 'portada',
-            'name'          => __( 'Portada', 'textdomain' ),
-            'description'   => __( 'Área de widgets para situar los enlaces a RSS e información de contacto', 'textdomain' ),
-            'before_widget' => '',
-            'after_widget'  => '',
-            'before_title'  => '',
-            'after_title'   => '',
-        )
-    );
-
-    // Área de widgets 2 (Pie de página)
-    register_sidebar(
-        array (
-            'id'            => 'pie-de-pagina',
-            'name'          => __( 'Pie de página', 'textdomain' ),
-            'description'   => __( 'Área de widgets para situar los enlaces a RSS e información de contacto', 'textdomain' ),
-            'before_widget' => '',
-            'after_widget'  => '',
-            'before_title'  => '',
-            'after_title'   => '',
-        )
-    );
-
-    // Área de widgets 3 (Página de inicio)
-    register_sidebar(
-        array (
-            'id'            => 'pagina-de-inicio',
-            'name'          => __( 'Página de inicio', 'textdomain' ),
-            'description'   => __( 'Área de widgets para situar el contenido de la página de inicio', 'textdomain' ),
+            'id'            => 'redes-sociales',
+            'name'          => __( 'Portada y footer', 'textdomain' ),
+            'description'   => __( 'Área de widgets para situar los enlaces a RSS', 'textdomain' ),
             'before_widget' => '',
             'after_widget'  => '',
             'before_title'  => '',
@@ -105,11 +79,11 @@ function cargar_fuentes() {
     wp_enqueue_style( 'IndieFlower' );
 
     // Amatic SC
-    wp_register_style( 'AmaticSC', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap' );
+    wp_register_style( 'AmaticSC', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap' );
     wp_enqueue_style( 'AmaticSC' );
 
     // Roboto
-    wp_register_style( 'Roboto', 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' );
+    wp_register_style( 'Roboto', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap' );
     wp_enqueue_style( 'Roboto' );
 }
 
