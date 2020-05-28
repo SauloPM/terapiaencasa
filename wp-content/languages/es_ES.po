@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.4.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-05-19 00:58:17+0000\n"
+"PO-Revision-Date: 2020-05-23 16:05:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,6 +76,10 @@ msgstr "."
 #: wp-includes/class-wp-locale.php:208
 msgid "number_format_decimal_point"
 msgstr ","
+
+#: wp-includes/rest-api.php:50
+msgid "Namespace must not start or end with a slash."
+msgstr "El namespace no debe empezar o acabar con una barra inclinada."
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: wp-includes/js/dist/block-editor.js:23760
@@ -2469,7 +2473,7 @@ msgid "Embed Crowdsignal (formerly Polldaddy) content."
 msgstr "Incrustar contenido de Crowdsignal (anteriormente Polldaddy)."
 
 #. translators: %s: rest_api_init
-#: wp-includes/rest-api.php:52
+#: wp-includes/rest-api.php:58
 msgid "REST API routes must be registered on the %s action."
 msgstr "Las rutas de la API REST deben registrarse en la acción %s."
 
@@ -3755,7 +3759,7 @@ msgstr "Mostrar los ajustes del bloque"
 
 #: wp-includes/js/dist/edit-post.js:2716
 msgid "Hide Block Settings"
-msgstr "Ocultar los ajustes del bloque"
+msgstr "Ocultar ajustes del bloque"
 
 #: wp-includes/js/dist/edit-post.js:2712
 msgid "Additional settings are now available in the Editor block settings sidebar"
@@ -4588,13 +4592,13 @@ msgstr "Convertir a bloque normal"
 
 #: wp-includes/js/dist/editor.js:13136
 msgid "Add to Reusable blocks"
-msgstr "Añadir a los bloques reutilizables"
+msgstr "Añadir a bloques reutilizables"
 
 #: wp-includes/js/dist/block-editor.js:24627
 msgid "Remove Block"
 msgid_plural "Remove Blocks"
-msgstr[0] "Eliminar el bloque"
-msgstr[1] "Eliminar los bloques"
+msgstr[0] "Eliminar bloque"
+msgstr[1] "Eliminar bloques"
 
 #: wp-includes/js/dist/block-editor.js:24615
 msgid "Insert After"
@@ -5244,7 +5248,7 @@ msgstr "El tipo de bloque «%s» ya está registrado."
 
 #: wp-includes/class-wp-block-type-registry.php:70
 msgid "Block type names must contain a namespace prefix. Example: my-plugin/my-custom-block-type"
-msgstr "Los nombres de tipo de bloque deben contener un prefijo de espacio de nombres. Ejemplo: my-plugin/my-custom-block-type"
+msgstr "Los nombres de tipo de bloque deben contener un prefijo de namespace. Ejemplo: my-plugin/my-custom-block-type"
 
 #: wp-includes/class-wp-block-type-registry.php:63
 msgid "Block type names must not contain uppercase characters."
@@ -5749,7 +5753,7 @@ msgid "Installed"
 msgstr "Instalado"
 
 #. translators: %s: Property of an object.
-#: wp-includes/rest-api.php:1279
+#: wp-includes/rest-api.php:1285
 msgid "%1$s is not a valid property of Object."
 msgstr "%1$s no es una propiedad válida del objeto."
 
@@ -7111,22 +7115,22 @@ msgid "Updated!"
 msgstr "¡Actualizado!"
 
 #. translators: 1: Parameter, 2: Maximum number.
-#: wp-includes/rest-api.php:1365
+#: wp-includes/rest-api.php:1371
 msgid "%1$s must be less than or equal to %2$d"
 msgstr "%1$s debe ser menor o igual a %2$d"
 
 #. translators: 1: Parameter, 2: Maximum number.
-#: wp-includes/rest-api.php:1362
+#: wp-includes/rest-api.php:1368
 msgid "%1$s must be less than %2$d"
 msgstr "%1$s debe ser menor que %2$d"
 
 #. translators: 1: Parameter, 2: Minimum number.
-#: wp-includes/rest-api.php:1357
+#: wp-includes/rest-api.php:1363
 msgid "%1$s must be greater than or equal to %2$d"
 msgstr "%1$s debe ser mayor o igual a %2$d"
 
 #. translators: 1: Parameter, 2: Minimum number.
-#: wp-includes/rest-api.php:1354
+#: wp-includes/rest-api.php:1360
 msgid "%1$s must be greater than %2$d"
 msgstr "%1$s debe ser mayor que %2$d"
 
@@ -7562,7 +7566,7 @@ msgid "Invalid slug."
 msgstr "Slug no válido."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:717
-#: wp-includes/rest-api.php:1338 wp-includes/user.php:3568
+#: wp-includes/rest-api.php:1344 wp-includes/user.php:3568
 msgid "Invalid email address."
 msgstr "Dirección de correo electrónico no valida."
 
@@ -7579,7 +7583,7 @@ msgstr "Llamada no válida a JSONP."
 msgid "Invalid page template."
 msgstr "Plantilla de página no válida."
 
-#: wp-includes/script-loader.php:1211 wp-includes/rest-api.php:1332
+#: wp-includes/script-loader.php:1211 wp-includes/rest-api.php:1338
 #: wp-includes/post.php:3739
 msgid "Invalid date."
 msgstr "Fecha no válida."
@@ -8055,42 +8059,42 @@ msgid "Item selected."
 msgstr "Elemento seleccionado."
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:1386
+#: wp-includes/rest-api.php:1392
 msgid "%1$s must be between %2$d (inclusive) and %3$d (inclusive)"
 msgstr "%1$s debe estar entre %2$d (incluido) y %3$d (incluido)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:1381
+#: wp-includes/rest-api.php:1387
 msgid "%1$s must be between %2$d (exclusive) and %3$d (inclusive)"
 msgstr "%1$s debe estar entre %2$d (excluido) y %3$d (incluido)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:1376
+#: wp-includes/rest-api.php:1382
 msgid "%1$s must be between %2$d (inclusive) and %3$d (exclusive)"
 msgstr "%1$s debe estar entre %2$d (incluido) y %3$d (excluido)"
 
 #. translators: 1: Parameter, 2: Minimum number, 3: Maximum number.
-#: wp-includes/rest-api.php:1371
+#: wp-includes/rest-api.php:1377
 msgid "%1$s must be between %2$d (exclusive) and %3$d (exclusive)"
 msgstr "%1$s debe estar entre %2$d (excluido) y %3$d (excluido)"
 
 #. translators: %s: IP address.
-#: wp-includes/rest-api.php:1344
+#: wp-includes/rest-api.php:1350
 msgid "%s is not a valid IP address."
 msgstr "%s no es una dirección de IP válida."
 
 #. translators: 1: Parameter, 2: List of types.
 #. translators: 1: Parameter, 2: Type name.
-#: wp-includes/rest-api.php:1231 wp-includes/rest-api.php:1241
-#: wp-includes/rest-api.php:1267 wp-includes/rest-api.php:1295
-#: wp-includes/rest-api.php:1310 wp-includes/rest-api.php:1315
-#: wp-includes/rest-api.php:1320 wp-includes/rest-api.php:1325
+#: wp-includes/rest-api.php:1237 wp-includes/rest-api.php:1247
+#: wp-includes/rest-api.php:1273 wp-includes/rest-api.php:1301
+#: wp-includes/rest-api.php:1316 wp-includes/rest-api.php:1321
+#: wp-includes/rest-api.php:1326 wp-includes/rest-api.php:1331
 msgid "%1$s is not of type %2$s."
 msgstr "%1$s no es del tipo %2$s."
 
 #. translators: 1: Parameter, 2: List of valid values.
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1363
-#: wp-includes/rest-api.php:1304
+#: wp-includes/rest-api.php:1310
 msgid "%1$s is not one of %2$s."
 msgstr "%1$s no es ninguna de las siguientes %2$s."
 
@@ -9700,7 +9704,7 @@ msgstr "Debe especificarse la ruta."
 
 #: wp-includes/rest-api.php:40
 msgid "Routes must be namespaced with plugin or theme name and version."
-msgstr "Las rutas deben tener espacio de nombres con el nombre y versión del plugin o tema."
+msgstr "Las rutas deben tener namespace con el nombre y versión del plugin o tema."
 
 #: wp-includes/post.php:1477
 msgid "Unregistering a built-in post type is not allowed"
@@ -10194,30 +10198,30 @@ msgstr "Nombre de shortcode no válido: Has dado un nombre vacío."
 msgid "Permalink saved"
 msgstr "Enlace permanente guardado"
 
-#: wp-includes/rest-api.php:917
+#: wp-includes/rest-api.php:923
 msgid "Cookie nonce is invalid"
 msgstr "La cookie nonce no es válida"
 
 #. translators: 1: Function name, 2: WordPress version number, 3: Error
 #. message.
-#: wp-includes/rest-api.php:565
+#: wp-includes/rest-api.php:571
 msgid "%1$s (since %2$s; %3$s)"
 msgstr "%1$s (desde %2$s; %3$s)"
 
 #. translators: 1: Function name, 2: WordPress version number.
-#: wp-includes/rest-api.php:544 wp-includes/rest-api.php:568
+#: wp-includes/rest-api.php:550 wp-includes/rest-api.php:574
 msgid "%1$s (since %2$s; no alternative available)"
 msgstr "%1$s (desde %2$s; sin alternativa disponible)"
 
 #. translators: 1: Function name, 2: WordPress version number, 3: New function
 #. name.
-#: wp-includes/rest-api.php:541
+#: wp-includes/rest-api.php:547
 msgid "%1$s (since %2$s; use %3$s instead)"
 msgstr "%1$s (desde %2$s; usa en su lugar %3$s)"
 
 #: wp-includes/rest-api/class-wp-rest-server.php:1144
 msgid "The specified namespace could not be found."
-msgstr "El nombre de espacio que has especificado no está disponible."
+msgstr "El namespace que has especificado no está disponible."
 
 #: wp-includes/rest-api/class-wp-rest-server.php:1057
 msgid "No route was found matching the URL and request method"
