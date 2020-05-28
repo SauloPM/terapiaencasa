@@ -96,13 +96,33 @@ $( window ).on( 'load', function() {
         }, 500);
     }
 
+    // ────────────────── //
+    //     PSICÓLOGOS     //
+	// ────────────────── //
+
+    // Configuracióm
+
+    var psicologos = $( '#psicologos .owl-carousel' );
+
+    psicologos.owlCarousel({
+        items: 1,
+        margin: 0,
+        center: true,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+		nav: false,
+        dots: false,
+        autoHeight:true,
+    });
+
 	// ─────────────────── //
     //     TESTIMONIOS     //
 	// ─────────────────── //
 	
     // Configuracióm
 
-    var testimonios = $( '.owl-carousel' );
+    var testimonios = $( '.testimonios .owl-carousel' );
 
     testimonios.owlCarousel({
         items: 1,

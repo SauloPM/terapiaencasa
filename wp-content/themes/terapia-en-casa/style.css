@@ -73,7 +73,7 @@ textarea:focus::placeholder {
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", "Rubik", sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -82,8 +82,6 @@ body {
   background: url(img/fondos/portada.jpg) bottom no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
 }
 body:after {
@@ -101,28 +99,23 @@ body:after {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 200px;
+  padding: 0 25px;
 }
-
-.wp-block-group strong {
-  font-weight: 500;
-}
-
 .wp-block-group p, .wp-block-group li {
   color: #323232;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
-  text-align: justify;
-  line-height: 30px;
+  text-align: left;
+  line-height: 25px;
   margin: 0;
   margin-right: auto;
 }
 .wp-block-group p {
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 .wp-block-group ul {
   list-style-type: circle;
-  padding: 0 0 0 50px;
+  padding: 0 0 0 20px;
   margin: 0;
   margin-right: auto;
 }
@@ -135,9 +128,41 @@ body:after {
   opacity: 0.75;
 }
 .wp-block-group ul li:last-child {
-  margin-bottom: 35px;
+  margin-bottom: 25px;
+}
+.wp-block-group strong {
+  font-weight: 500;
 }
 
+@media only screen and (min-width: 480px) {
+  .wp-block-group {
+    padding: 0 50px;
+  }
+  .wp-block-group p, .wp-block-group li {
+    font-size: 16px;
+    text-align: justify;
+    line-height: 30px;
+  }
+  .wp-block-group p {
+    margin-bottom: 35px;
+  }
+  .wp-block-group ul {
+    padding: 0 0 0 50px;
+  }
+  .wp-block-group ul li:last-child {
+    margin-bottom: 35px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .wp-block-group {
+    padding: 0 100px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .wp-block-group {
+    padding: 0 200px;
+  }
+}
 p.texto-centrado {
   -moz-text-align-last: center;
   text-align-last: center;
@@ -152,22 +177,12 @@ p:not(.saber-mas) a:hover {
   opacity: 0.75;
 }
 
-.contenedor {
-  background: white;
-  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.5);
-  margin: 150px auto;
-  position: relative;
-  z-index: 25;
-  width: 100%;
-  max-width: 1200px;
-}
-
 h2 {
   color: #af9b46;
-  font-size: 40px;
+  font-size: 35px;
   font-family: "Amatic SC", cursive;
   text-align: center;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   line-height: 55px;
   margin: 0 0 50px;
   position: relative;
@@ -184,9 +199,20 @@ h2 + hr {
 
 h3 {
   margin-right: auto;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
+@media only screen and (min-width: 480px) {
+  h2 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    margin: 0 0 50px;
+  }
+
+  h3 {
+    margin-bottom: 35px;
+  }
+}
 a.boton {
   color: #af9b46;
   text-decoration: none;
@@ -216,6 +242,20 @@ p.saber-mas a:hover {
   border-bottom-color: #af9b46;
 }
 
+.contenedor {
+  background: white;
+  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 25;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+  .contenedor {
+    margin: 150px auto;
+    max-width: 1200px;
+  }
+}
 .margin-bottom-0 {
   margin-bottom: 0 !important;
 }
@@ -287,7 +327,9 @@ p.saber-mas a:hover {
   font-size: 100px;
   font-weight: lighter;
   font-family: "Brittanian", cursive;
+  text-align: center;
   text-transform: lowercase;
+  line-height: 70px;
   margin: 0;
 }
 .portada .redes-sociales {
@@ -379,47 +421,6 @@ p.saber-mas a:hover {
   width: 498px;
   height: 280px;
   overflow: hidden;
-}
-
-.videoo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.5);
-  margin: 50px auto;
-  width: 650px;
-  height: 350px;
-  transition: 0.5s;
-  cursor: pointer;
-}
-.videoo .play {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  width: 125px;
-  height: 125px;
-  transition: 0.5s;
-}
-.videoo .play .flecha {
-  border-top: 32px solid transparent;
-  border-left: 50px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 32px solid transparent;
-  width: 0;
-  height: 0;
-  position: relative;
-  left: 8px;
-  transition: 0.5s;
-}
-.videoo:hover .play {
-  box-shadow: 0 0 0 10px white;
-}
-.videoo:hover .play .flecha {
-  border-left-color: white;
 }
 
 .callout,
@@ -732,8 +733,97 @@ p.saber-mas a:hover {
   margin-right: 25px;
 }
 
-#legal p {
+#psicologos .fotografia {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #c8c8c8;
+  margin: 10px auto 35px;
+  width: 200px;
+  height: 200px;
+}
+#psicologos h3 {
+  text-align: center;
+}
+#psicologos .emocion-razon-emocion {
+  border: 1px solid #c8c8c8;
+  padding: 35px 35px 0;
   margin-bottom: 35px;
+  position: relative;
+}
+#psicologos .emocion-razon-emocion h4 {
+  color: #c8c8c8;
+  font-weight: normal;
+  background: white;
+  padding: 0 10px;
+  position: absolute;
+  top: -10px;
+  left: 25px;
+}
+#psicologos .emocion-razon-emocion p:empty {
+  display: none;
+}
+#psicologos .libros {
+  display: flex;
+  justify-content: center;
+}
+#psicologos .libros .libro {
+  border: 10px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  position: relative;
+  width: 300px;
+  height: auto;
+}
+#psicologos .libros .libro .overlay {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  background: #af9b46;
+  padding: 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.5s;
+}
+#psicologos .libros .libro .overlay .titulo {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 15px;
+  padding: 15px;
+}
+#psicologos .libros .libro .overlay .editorial {
+  font-size: 12px;
+  line-height: 12px;
+  margin-bottom: 15px;
+}
+#psicologos .libros .libro .overlay .descripcion {
+  text-align: left;
+}
+#psicologos .libros .libro:first-child {
+  margin-right: 35px;
+}
+#psicologos .libros .libro:hover .overlay {
+  opacity: 1;
+}
+#psicologos .certificados {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -35px;
+}
+#psicologos .certificados .certificado {
+  border: 10px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  width: 300px;
+  height: auto;
+}
+#psicologos .certificados .certificado:first-child {
+  margin-right: 35px;
 }
 
 #cookie-law-info-bar {
