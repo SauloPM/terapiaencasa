@@ -21,7 +21,7 @@
         <!--     PORTADA     -->
         <!-- ─────────────── -->
 
-        <header class="portada">
+        <header id="portada">
 
             <!-- Menú de navegación -->
             <?php
