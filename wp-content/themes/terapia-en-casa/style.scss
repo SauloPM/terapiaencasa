@@ -312,6 +312,7 @@ p.saber-mas {
         margin: 0;
 
         .menu-item {
+            font-size: 13px;
             padding: 20px 0;
 
             a {
@@ -324,6 +325,15 @@ p.saber-mas {
                 }
             }
         }
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+
+    #menu .items .menu-item {
+        font-size: 16px;
     }
 }
 
@@ -485,52 +495,72 @@ p.saber-mas {
 //     CALLOUT     //
 // ─────────────── //
 
-.callout,
 .wp-block-cover {
     display: flex;
     align-items: center;
     justify-content: center;
     border-top: 10px solid rgba(255,255,255,.5);
     border-bottom: 10px solid rgba(255,255,255,.5);
-    padding: 75px 100px;
-    margin: 100px 0;
+    padding: 35px 25px;
+    margin: 50px 0;
     position: relative;
     width: 100%;
     
-    * {
+    p {
         color: transparent !important;
-        font-size: 75px;
+        font-size: 50px;
         font-weight: lighter;
         font-family: 'Brittanian', cursive;
-        text-align: center;
+        text-align: left;
         text-transform: lowercase;
         text-shadow: 0px 0px 1px white;
-        line-height: 75px;
+        line-height: 50px;
         margin: 0;
         position: relative;
         z-index: 50;
 
-        &.tilde:after {
-            content: ",";
-            position: absolute;
-            bottom: 35px;
-            right: 30px;
+        br {
+            display: none;
         }
     }
+}
 
-    &.bg-callout-1 {
-        background: url(img/fondos/callout1.jpg) fixed no-repeat center;
-        background-size: cover;
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+
+    .wp-block-cover {
+        padding: 75px 50px;
+        margin: 100px 0;
+
+        p {
+            font-size: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
     }
+}
 
-    &.bg-callout-2 {
-        background: url(img/fondos/callout2.jpg) fixed no-repeat center;
-        background-size: cover;
+@media only screen and (min-width: $tablet) {
+
+    .wp-block-cover {
+        padding: 75px 100px;
+
+        p {
+            font-size: 75px;
+            line-height: 60px;
+
+            br {
+                display: block;
+            }
+        }
     }
+}
 
-    &.bg-callout-3 {
-        background: url(img/fondos/callout3.jpg) fixed no-repeat center;
-        background-size: cover;
+@media only screen and (min-width: $desktop) {
+
+    .wp-block-cover {
+        padding: 75px 200px;
     }
 }
 
