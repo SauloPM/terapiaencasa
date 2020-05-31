@@ -434,14 +434,30 @@ p.saber-mas a:hover {
   }
 }
 .video {
-  display: block;
   box-shadow: 0 0 0 10px rgba(230, 230, 230, 0.5);
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   margin: 45px auto;
-  width: 498px;
-  height: 280px;
+  position: relative;
+  width: 100%;
   overflow: hidden;
 }
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
 
+@media only screen and (min-width: 768px) {
+  .video {
+    padding-top: 280px;
+    width: 498px;
+  }
+}
 .wp-block-cover {
   display: flex;
   align-items: center;
@@ -502,11 +518,39 @@ p.saber-mas a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(img/fondos/testimonios.jpg) fixed no-repeat center;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.25)), url(img/fondos/testimonios.jpg) fixed no-repeat center;
   background-size: cover;
-  padding: 100px 75px;
-  margin: 100px 0;
+  padding: 35px 50px;
+  margin: 50px 0;
   position: relative;
+}
+.testimonios .item {
+  color: white;
+  font-size: 18px;
+  font-family: "Indie Flower", sans-serif;
+  letter-spacing: 1px;
+  line-height: 35px;
+  text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
+}
+.testimonios .flechas .flecha {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.testimonios .flechas .flecha.flecha-izquierda {
+  left: 15px;
+}
+.testimonios .flechas .flecha.flecha-derecha {
+  right: 15px;
+}
+.testimonios .flechas .flecha:hover {
+  color: white;
 }
 .testimonios:before {
   content: "";
@@ -528,36 +572,34 @@ p.saber-mas a:hover {
   width: 100%;
   height: 10px;
 }
-.testimonios .item {
-  color: white;
-  font-size: 25px;
-  font-family: "Indie Flower", sans-serif;
-  letter-spacing: 1px;
-  line-height: 40px;
-  text-align: justify;
-  -moz-text-align-last: center;
-  text-align-last: center;
-  margin: 0 25px;
-}
-.testimonios .flechas .flecha {
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 40px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: 0.5s;
-  cursor: pointer;
-}
-.testimonios .flechas .flecha.flecha-izquierda {
-  left: 35px;
-}
-.testimonios .flechas .flecha.flecha-derecha {
-  right: 35px;
-}
-.testimonios .flechas .flecha:hover {
-  color: white;
-}
 
+@media only screen and (min-width: 480px) {
+  .testimonios {
+    padding: 75px 50px;
+    margin: 100px 0;
+  }
+  .testimonios .flechas .flecha.flecha-izquierda {
+    left: 35px;
+  }
+  .testimonios .flechas .flecha.flecha-derecha {
+    right: 35px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .testimonios {
+    background: url(img/fondos/testimonios.jpg) fixed no-repeat center;
+    padding: 75px 100px;
+  }
+  .testimonios .item {
+    font-size: 25px;
+    line-height: 40px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .testimonios {
+    padding: 75px 200px;
+  }
+}
 #contacto {
   padding-bottom: 0;
   /*.wpcf7-response-output {

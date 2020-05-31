@@ -131,6 +131,7 @@ $( window ).on( 'load', function() {
         items: 1,
         margin: 0,
         center: true,
+        margin: 25,
 		loop: true,
 		autoplay: true,
         autoplayHoverPause: true,

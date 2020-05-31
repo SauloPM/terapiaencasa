@@ -483,12 +483,32 @@ p.saber-mas {
 // ───────────── //
 
 .video {
-    display: block;
     box-shadow: 0 0 0 10px rgba(230,230,230,.5);
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     margin: 45px auto;
-    width: 498px;
-    height: 280px;
+    position: relative;
+    width: 100%;
     overflow: hidden;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $tablet) {
+
+    .video {
+        padding-top: 280px;
+        width: 498px;
+    }
 }
 
 // ─────────────── //
@@ -572,11 +592,44 @@ p.saber-mas {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(img/fondos/testimonios.jpg) fixed no-repeat center;
+    background: linear-gradient( to right, transparent, rgba(0,0,0,.25)), url(img/fondos/testimonios.jpg) fixed no-repeat center;
     background-size: cover;
-    padding: 100px 75px;
-    margin: 100px 0;
+    padding: 35px 50px;
+    margin: 50px 0;
     position: relative;
+
+    .item {
+        color: white;
+        font-size: 18px;
+        font-family: 'Indie Flower', sans-serif;
+        letter-spacing: 1px;
+        line-height: 35px;
+        text-align: justify;  
+        -moz-text-align-last: center; // Mozilla Firefox
+            text-align-last: center;
+    }
+
+    .flechas .flecha {
+        color: rgba(255,255,255,.25);
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .5s;
+        cursor: pointer;
+
+        &.flecha-izquierda {
+            left: 15px;
+        }
+    
+        &.flecha-derecha {
+            right: 15px;
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
 
     &:before {
         content: '';
@@ -599,41 +652,46 @@ p.saber-mas {
         width: 100%;
         height: 10px;
     }
+}
 
-    .item {
-        color: white;
-        font-size: 25px;
-        font-family: 'Indie Flower', sans-serif;
-        letter-spacing: 1px;
-        line-height: 40px;
-        text-align: justify;  
-        -moz-text-align-last: center; // Mozilla Firefox
-            text-align-last: center;
-        margin: 0 25px;
-    }
+// Mobile First
 
-    // Navegación
+@media only screen and (min-width: $mobile) {
 
-    .flechas .flecha {
-        color: rgba(255,255,255,.25);
-        font-size: 40px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: .5s;
-        cursor: pointer;
+    .testimonios {
+        padding: 75px 50px;
+        margin: 100px 0;
 
-        &.flecha-izquierda {
-            left: 35px;
-        }
+        .flechas .flecha {
     
-        &.flecha-derecha {
-            right: 35px;
+            &.flecha-izquierda {
+                left: 35px;
+            }
+        
+            &.flecha-derecha {
+                right: 35px;
+            }
         }
+    }
+}
 
-        &:hover {
-            color: white;
+@media only screen and (min-width: $tablet) {
+
+    .testimonios {
+        background: url(img/fondos/testimonios.jpg) fixed no-repeat center;
+        padding: 75px 100px;
+
+        .item {
+            font-size: 25px;
+            line-height: 40px;
         }
+    }
+}
+
+@media only screen and (min-width: $desktop) {
+
+    .testimonios {
+        padding: 75px 200px;
     }
 }
 
