@@ -42,7 +42,10 @@ $( window ).on( 'load', function() {
 
     // ──────────────── //
     //     CONTACTO     //
-	// ──────────────── //
+    // ──────────────── //
+
+    // Desactivamos el checkbox porque si el usuario lo activa y refresca la página, este permanece activado
+    $( '.lopd input' ).prop( 'checked' , false );
 
     // Evitar el autocompletado
     $( '.entrada input' ).attr( 'autocomplete', 'off' );

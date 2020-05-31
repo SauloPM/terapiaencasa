@@ -260,7 +260,7 @@ p.saber-mas {
     width: 100%;
 }
 
-@media only screen and (min-width: $desktop) {
+@media only screen and (min-width: 1250px) {
 
     .contenedor {
         margin: 150px auto;
@@ -614,8 +614,13 @@ p.saber-mas {
 #contacto {
     padding-bottom: 0;
 
+    p:empty {
+        display: none;
+    }
+
     .formulario {
         display: flex;
+        flex-direction: column;
 
         .columna {
             width: 100%;
@@ -623,7 +628,7 @@ p.saber-mas {
 
         .entrada {
             border: 1px solid $gris-claro;
-            margin: 0 0 25px;
+            margin: 0 0 15px;
             position: relative;
 
             br {
@@ -633,7 +638,7 @@ p.saber-mas {
             input,
             textarea {
                 color: $texto;
-                font-size: 15px;
+                font-size: 13px;
                 font-weight: normal;
                 line-height: 25px;
                 background: none;
@@ -641,11 +646,10 @@ p.saber-mas {
                 outline: none;
                 padding: 12px 20px;
                 width: 100%;
-                transition: .5s;
             }
 
             textarea {
-                height: 197px;
+                height: 150px;
                 resize: none;   
             }
 
@@ -724,10 +728,10 @@ p.saber-mas {
             margin: 0 0 0 4px;
 
             .wpcf7-list-item-label {
-                font-size: 12px;
+                font-size: 10px;
                 margin-left: 2px;
                 position: relative;
-                bottom: 2px;
+                bottom: 3px;
             }
         }
     }
@@ -799,6 +803,48 @@ p.saber-mas {
             &:last-child {
                 margin: 0;
             }
+        }
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $tablet) {
+
+    #contacto {
+
+        .formulario {
+            flex-direction: row;
+
+            .columna:nth-child(1) {
+                margin-right: 25px;
+            }
+
+            .columna:nth-child(2) {
+                margin-top: 0;
+            }
+
+            .entrada {
+                margin: 0 0 25px;
+    
+                input,
+                textarea {
+                    font-size: 15px;
+                    line-height: 25px;
+                    padding: 12px 20px;
+                }
+
+                textarea {
+                    height: 201px;
+                }
+            }
+        }
+
+        // LOPD
+
+        .lopd .wpcf7-list-item .wpcf7-list-item-label {
+            font-size: 12px;
+            bottom: 2px;
         }
     }
 }

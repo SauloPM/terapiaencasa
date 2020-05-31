@@ -250,7 +250,7 @@ p.saber-mas a:hover {
   width: 100%;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1250px) {
   .contenedor {
     margin: 150px auto;
     max-width: 1200px;
@@ -560,15 +560,19 @@ p.saber-mas a:hover {
       transform: translateX(-50%);
   }*/
 }
+#contacto p:empty {
+  display: none;
+}
 #contacto .formulario {
   display: flex;
+  flex-direction: column;
 }
 #contacto .formulario .columna {
   width: 100%;
 }
 #contacto .formulario .entrada {
   border: 1px solid #c8c8c8;
-  margin: 0 0 25px;
+  margin: 0 0 15px;
   position: relative;
 }
 #contacto .formulario .entrada br {
@@ -577,7 +581,7 @@ p.saber-mas a:hover {
 #contacto .formulario .entrada input,
 #contacto .formulario .entrada textarea {
   color: #323232;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 25px;
   background: none;
@@ -585,10 +589,9 @@ p.saber-mas a:hover {
   outline: none;
   padding: 12px 20px;
   width: 100%;
-  transition: 0.5s;
 }
 #contacto .formulario .entrada textarea {
-  height: 197px;
+  height: 150px;
   resize: none;
 }
 #contacto .formulario .entrada .wpcf7-not-valid-tip {
@@ -646,10 +649,10 @@ p.saber-mas a:hover {
   margin: 0 0 0 4px;
 }
 #contacto .lopd .wpcf7-list-item .wpcf7-list-item-label {
-  font-size: 12px;
+  font-size: 10px;
   margin-left: 2px;
   position: relative;
-  bottom: 2px;
+  bottom: 3px;
 }
 #contacto .wpcf7-response-output {
   color: white;
@@ -715,6 +718,33 @@ p.saber-mas a:hover {
   margin: 0;
 }
 
+@media only screen and (min-width: 768px) {
+  #contacto .formulario {
+    flex-direction: row;
+  }
+  #contacto .formulario .columna:nth-child(1) {
+    margin-right: 25px;
+  }
+  #contacto .formulario .columna:nth-child(2) {
+    margin-top: 0;
+  }
+  #contacto .formulario .entrada {
+    margin: 0 0 25px;
+  }
+  #contacto .formulario .entrada input,
+#contacto .formulario .entrada textarea {
+    font-size: 15px;
+    line-height: 25px;
+    padding: 12px 20px;
+  }
+  #contacto .formulario .entrada textarea {
+    height: 201px;
+  }
+  #contacto .lopd .wpcf7-list-item .wpcf7-list-item-label {
+    font-size: 12px;
+    bottom: 2px;
+  }
+}
 #footer {
   display: flex;
   flex-direction: column-reverse;
