@@ -6,9 +6,28 @@
 
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ──────────────────────── -->
+    <!--     GOOGLE ANALYTICS     -->
+    <!-- ──────────────────────── -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122678366-1"></script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-122678366-1');
+    </script>
+
+    <meta name="google-site-verification" content="GTh7Fnv0lb4CatOU9Jb9QaOPexTwceN5Jd37El5VYo4" />
     
 </head>
 <body <?php body_class(); ?>>
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9GTF7B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Spinner -->
     <div class="fondo-blanco">
