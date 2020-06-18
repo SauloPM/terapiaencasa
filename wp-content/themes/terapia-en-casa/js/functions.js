@@ -23,7 +23,7 @@ $( window ).on( 'load', function() {
     //     NAVEGACIÓN     //
 	// ────────────────── //
 
-    $( document ).on( 'click', '.menu-item a, .saber-mas a', function( evento ) {
+    $( document ).on( 'click', '.menu-item a, .saber-mas a, a.saber-mas', function( evento ) {
         
         evento.preventDefault();
 

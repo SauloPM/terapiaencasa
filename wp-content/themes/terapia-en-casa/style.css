@@ -866,6 +866,69 @@ p.saber-mas a:hover {
     padding: 18px 200px;
   }
 }
+.blog {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 50px;
+}
+.blog .tarjeta {
+  display: inline-block;
+  border: 1px solid #c8c8c8;
+  margin: 0 10px 35px;
+  width: 100%;
+  max-width: 300px;
+}
+.blog .tarjeta .imagen-destacada {
+  width: 100%;
+  height: auto;
+}
+.blog .tarjeta .cuerpo {
+  padding: 25px;
+}
+.blog .tarjeta .cuerpo h2 {
+  font-size: 30px;
+  letter-spacing: 2px;
+  line-height: 25px;
+  margin-bottom: 35px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.blog .tarjeta .cuerpo .extracto {
+  text-align: left;
+  margin-bottom: 25px;
+}
+.blog .tarjeta .cuerpo .saber-mas {
+  display: block;
+  color: #af9b46;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #af9b46;
+  padding: 12px 0;
+  width: 100%;
+  transition: 0.5s;
+}
+.blog .tarjeta .cuerpo .saber-mas:hover {
+  color: white;
+  background: #af9b46;
+}
+
+.post .imagen-destacada {
+  margin-bottom: 35px;
+  width: 100%;
+  height: auto;
+}
+.post .fecha {
+  color: #af9b46;
+  text-align: left;
+  width: 100%;
+}
+.post p:empty {
+  display: none !important;
+}
+
 #psicologos .fotografia {
   display: block;
   background-size: cover;

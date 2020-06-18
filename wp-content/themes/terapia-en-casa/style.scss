@@ -1024,6 +1024,90 @@ p.saber-mas {
     }
 }
 
+// ────────────────── //
+//     VISTA BLOG     //
+// ────────────────── //
+
+.blog {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 50px;
+
+    .tarjeta {
+        display: inline-block;
+        border: 1px solid $gris-claro;
+        margin: 0 10px 35px;
+        width: 100%;
+        max-width: 300px;
+    
+        .imagen-destacada {
+            width: 100%;
+            height: auto;
+        }
+
+        .cuerpo {
+            padding: 25px;
+
+            h2 {
+                font-size: 30px;
+                letter-spacing: 2px;
+                line-height: 25px;
+                margin-bottom: 35px;
+                
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .extracto {
+                text-align: left;
+                margin-bottom: 25px;
+            }
+
+            .saber-mas {
+                display: block;
+                color: $primario;
+                text-align: center;
+                text-decoration: none;
+                border: 1px solid $primario;
+                padding: 12px 0;
+                width: 100%;
+                transition: .5s;
+                
+                &:hover {
+                    color: white;
+                    background: $primario;
+                }
+            }
+        }
+    }
+}
+
+// ────────────────── //
+//     VISTA POST     //
+// ────────────────── //
+
+.post {
+
+    .imagen-destacada {
+        margin-bottom: 35px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .fecha {
+        color: $primario;
+        text-align: left;
+        width: 100%;
+    }
+
+    p:empty {
+        display: none !important;
+    }
+}
+
 // ───────────── //
 //     LEGAL     //
 // ───────────── //
