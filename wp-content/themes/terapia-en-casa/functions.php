@@ -2,6 +2,13 @@
 
 show_admin_bar(false);
 
+// ───────────── //
+//     POSTS     //
+// ───────────── //
+
+// Habilita la sección en el dashboard para páginas y entradas
+add_theme_support( 'post-thumbnails' );
+
 // ──────────── //
 //     MENÚ     //
 // ──────────── //
