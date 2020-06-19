@@ -99,6 +99,10 @@ body {
 
     p {
         margin-bottom: 25px;
+
+        &:empty {
+            display: none;
+        }
     }
     
     ul {
@@ -1145,9 +1149,9 @@ p.saber-mas {
     }
 
     .emocion-razon-emocion {
-        border: 1px solid $gris-claro;
-        padding: 35px 35px 0;
-        margin-bottom: 35px;
+        border-top: 1px solid $gris-claro;
+        padding-top: 60px;
+        margin-top: 25px;
         position: relative;
 
         h4 {
@@ -1160,8 +1164,20 @@ p.saber-mas {
             left: 25px;
         }
 
-        p:empty {
-            display: none;
+        .comillas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $gris-claro;
+            background: white;
+            border: 1px solid $gris-claro;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translateX(-50%);
         }
     }
 
@@ -1222,7 +1238,6 @@ p.saber-mas {
     .certificados {
         display: flex;
         justify-content: center;
-        margin-bottom: -35px;
         
         .certificado {
             border: 10px solid rgba(0,0,0,.1);

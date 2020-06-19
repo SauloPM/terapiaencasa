@@ -113,6 +113,9 @@ body:after {
 .wp-block-group p {
   margin-bottom: 25px;
 }
+.wp-block-group p:empty {
+  display: none;
+}
 .wp-block-group ul {
   list-style-type: circle;
   padding: 0 0 0 20px;
@@ -956,9 +959,9 @@ p.saber-mas a:hover {
   text-align: center;
 }
 #psicologos .emocion-razon-emocion {
-  border: 1px solid #c8c8c8;
-  padding: 35px 35px 0;
-  margin-bottom: 35px;
+  border-top: 1px solid #c8c8c8;
+  padding-top: 60px;
+  margin-top: 25px;
   position: relative;
 }
 #psicologos .emocion-razon-emocion h4 {
@@ -970,8 +973,20 @@ p.saber-mas a:hover {
   top: -10px;
   left: 25px;
 }
-#psicologos .emocion-razon-emocion p:empty {
-  display: none;
+#psicologos .emocion-razon-emocion .comillas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c8c8c8;
+  background: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 50%;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translateX(-50%);
 }
 #psicologos .libros {
   display: flex;
@@ -1022,7 +1037,6 @@ p.saber-mas a:hover {
 #psicologos .certificados {
   display: flex;
   justify-content: center;
-  margin-bottom: -35px;
 }
 #psicologos .certificados .certificado {
   border: 10px solid rgba(0, 0, 0, 0.1);
