@@ -8,11 +8,11 @@
 
         echo "<h2>Entradas</h2>";
 
-        echo "<div class='blog wp-block-group'>";
+        echo "<div class='entradas'>";
 
         while ( have_posts() ) {
 
-            echo "<div class='tarjeta'>";
+            echo "<div class='entrada'>";
             
                 the_post();
 

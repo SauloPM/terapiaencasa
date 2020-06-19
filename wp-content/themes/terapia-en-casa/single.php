@@ -17,9 +17,6 @@
             }
 
             echo "<p>" . the_content() . "</p>";
-
-            // echo "<div class='fecha'>" . get_the_date() . "</div>";
-
         }
 
         echo "</div>";

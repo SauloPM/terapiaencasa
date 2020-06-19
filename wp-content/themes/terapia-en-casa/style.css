@@ -866,28 +866,28 @@ p.saber-mas a:hover {
     padding: 18px 200px;
   }
 }
-.blog {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0 50px;
+.entradas {
+  columns: 1;
+  column-gap: 0;
+  margin: 0 auto -35px;
 }
-.blog .tarjeta {
-  display: inline-block;
+.entradas .entrada {
+  break-inside: avoid;
   border: 1px solid #c8c8c8;
-  margin: 0 10px 35px;
+  margin: 0 auto 35px;
+  position: relative;
   width: 100%;
   max-width: 300px;
+  overflow: hidden;
 }
-.blog .tarjeta .imagen-destacada {
+.entradas .entrada .imagen-destacada {
   width: 100%;
   height: auto;
 }
-.blog .tarjeta .cuerpo {
+.entradas .entrada .cuerpo {
   padding: 25px;
 }
-.blog .tarjeta .cuerpo h2 {
+.entradas .entrada .cuerpo h2 {
   font-size: 30px;
   letter-spacing: 2px;
   line-height: 25px;
@@ -896,11 +896,11 @@ p.saber-mas a:hover {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.blog .tarjeta .cuerpo .extracto {
+.entradas .entrada .cuerpo .extracto {
   text-align: left;
   margin-bottom: 25px;
 }
-.blog .tarjeta .cuerpo .saber-mas {
+.entradas .entrada .cuerpo .saber-mas {
   display: block;
   color: #af9b46;
   text-align: center;
@@ -910,11 +910,23 @@ p.saber-mas a:hover {
   width: 100%;
   transition: 0.5s;
 }
-.blog .tarjeta .cuerpo .saber-mas:hover {
+.entradas .entrada .cuerpo .saber-mas:hover {
   color: white;
   background: #af9b46;
 }
 
+@media only screen and (min-width: 680px) {
+  .entradas {
+    columns: 2;
+    width: 670px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .entradas {
+    columns: 3;
+    width: 980px;
+  }
+}
 .post .imagen-destacada {
   margin-bottom: 35px;
   width: 100%;
