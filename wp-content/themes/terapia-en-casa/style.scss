@@ -1066,7 +1066,13 @@ p.saber-mas {
             }
 
             .extracto {
-                text-align: left;
+                color: $texto;
+                font-size: 13px;
+                font-weight: normal;
+                text-align: left;  
+                line-height: 25px;
+                margin: 0;
+                margin-right: auto;
                 margin-bottom: 25px;
             }
 
@@ -1086,6 +1092,16 @@ p.saber-mas {
                 }
             }
         }
+    }
+}
+
+@media only screen and (min-width: $mobile) {
+
+    .entradas .entrada .cuerpo .extracto {
+
+        font-size: 16px;
+        line-height: 30px;
+        margin-bottom: 35px;
     }
 }
 

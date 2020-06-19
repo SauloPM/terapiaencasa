@@ -900,7 +900,13 @@ p.saber-mas a:hover {
   text-overflow: ellipsis;
 }
 .entradas .entrada .cuerpo .extracto {
+  color: #323232;
+  font-size: 13px;
+  font-weight: normal;
   text-align: left;
+  line-height: 25px;
+  margin: 0;
+  margin-right: auto;
   margin-bottom: 25px;
 }
 .entradas .entrada .cuerpo .saber-mas {
@@ -918,6 +924,13 @@ p.saber-mas a:hover {
   background: #af9b46;
 }
 
+@media only screen and (min-width: 480px) {
+  .entradas .entrada .cuerpo .extracto {
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 35px;
+  }
+}
 @media only screen and (min-width: 680px) {
   .entradas {
     columns: 2;
