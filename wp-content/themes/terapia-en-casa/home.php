@@ -17,7 +17,7 @@
                 the_post();
 
                 if ( has_post_thumbnail() ) {
-                    the_post_thumbnail( "full", array( "class" => "imagen-destacada" ));
+                    the_post_thumbnail( "medium", array( "class" => "imagen-destacada" ));
                 }
 
                 echo "<div class='cuerpo'>";
