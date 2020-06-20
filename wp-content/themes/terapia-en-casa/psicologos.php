@@ -8,108 +8,90 @@
 
 <?php
 
-    $items = get_posts(
+$items = get_posts( array( 'post_type' => 'psicologos', 'numberposts'=> -1 ) );
 
-        array(
-            'post_per_page' => -1,
-            'post_type' => 'psicologos',
-            'category_name' => $type,
-            'numberposts'=> -1
-        )
-    );
+if ( $items ) {
 
-    $catObj = get_category_by_slug( $type );
-    $parent = get_the_category_by_ID( $catObj->category_parent );
-?>
+    echo "<section id='psicologos' class='wp-block-group'>";
 
-<?php if ( $items ): ?>
+        foreach ( $items as $item ) {
 
-<section id="psicologos" class="wp-block-group">
+            setup_postdata( $item );
 
-    <?php foreach ( $items as $item ) : ?>
+            $campos = get_fields( $item->ID );
 
-        <?php
+            // Nombre
+            echo "<h2>" . get_the_title( $item ) . "</h2>";
             
-        $campos = get_fields( $item->ID );
+            // Imagen
+            echo "<div class='fotografia' style='background-image: url(" . $campos["fotografia"]["url"] . ")'></div>";
 
-        setup_postdata( $item );
+            // Puesto
+            echo "<h3>" . $campos["puesto"] . "</h3>";
 
-        ?>
+            // Formación
+            echo get_the_content( $item );
 
-        <!-- Nombre -->
-        <h2><?php echo get_the_title( $item) ?></h2>
-        
-        <!-- Fotografía -->
-        <div class="fotografia" style="background-image: url(<?php echo $campos["fotografia"]["url"] ?>)"></div>
+            // Emoción - Razón - Emoción
+            echo "<div class='emocion-razon-emocion'>";
+                echo "<i class='comillas fa fa-quote-left'></i>";
+                echo $campos["emocion_razon_emocion"];
+            echo "</div>";
 
-        <!-- Puesto -->
-        <h3><?php echo $campos["puesto"] ?></h3>
+            // ────────────── //
+            //     LIBROS     //
+            // ────────────── //
 
-        <!-- Formación -->
-        <p><?php echo get_the_content( $item ) ?></p>
+            $libros = array( get_field( 'libro_publicado_1', $item->ID ), get_field( 'libro_publicado_2', $item->ID ));
 
-        <!-- Emoción - Razón - Emoción -->
-        <div class="emocion-razon-emocion">
-            <i class="comillas fa fa-quote-left" aria-hidden="true"></i>
-            <p><?php echo $campos["emocion_razon_emocion"] ?></p>
-        </div>
+            if( $libro[0]['titulo'] || $libros[1]['titulo'] ) {
 
-        <!-- ────────────── -->
-        <!--     LIBROS     -->
-        <!-- ────────────── -->
+                echo "<h3>Libros publicados</h3>";
 
-        <?php $libros = array( get_field( 'libro_publicado_1', $item->ID ), get_field( 'libro_publicado_2', $item->ID )) ?>
+                echo "<div class='libros'>";
 
-        <?php if( $libro[0]['titulo'] || $libros[1]['titulo'] ): ?>
+                    foreach ( $libros as $libro ) {
 
-            <h3>Libros publicados</h3>
+                        if( $libro ) {
+                            echo "<a class='libro' href='" . $libro['link'] . "' target='_blank'>";
+                                echo "<img src='" . esc_url( $libro['imagen']['url'] ) . "' alt='' />";
+                                echo "<div class='overlay'>";
+                                    echo "<div class='titulo'>" . $libro['titulo'] . "</div>";
+                                    echo "<div class='editorial'>" . 'Editorial ' . $libro['editorial'] . "</div>";
+                                    echo "<div class='descripcion'>" . $libro['descripcion'] . "</div>";
+                                echo "</div>";
+                            echo "</a>";
+                        }
+                    }
+                echo "</div>";
+            }
 
-            <div class="libros">
+            // ────────────────── //
+            //     EXCELENCIA     //
+            // ────────────────── //
 
-                <?php foreach ( $libros as $libro ): ?>
+            $certificados = array( get_field( 'certificado_de_excelencia_en_doctoralia_en_2018', $item->ID ), get_field( 'certificado_de_excelencia_en_doctoralia_en_2019', $item->ID ));
 
-                    <?php if( $libro ): ?>
-                        <a class="libro" href="<?php echo $libro['link'] ?>" target="_blank">
-                            <img src="<?php echo esc_url( $libro['imagen']['url'] ) ?>" alt="" />
-                            <div class="overlay">
-                                <div class="titulo"><?php echo $libro['titulo'] ?></div>
-                                <div class="editorial"><?php echo 'Editorial ' . $libro['editorial'] ?></div>
-                                <div class="descripcion"><?php echo $libro['descripcion'] ?></div>
-                            </div>
-                        </a>
-                    <?php endif ?>
-                <?php endforeach ?>
-            </div>
-        <?php endif ?>
+            if( $certificados[0] || $certificados[1] ) {
 
-        <!-- ────────────────── -->
-        <!--     EXCELENCIA     -->
-        <!-- ────────────────── -->
+                echo "<h3>Certificados de excelencia en Doctoralia</h3>";
 
-        <?php $certificados = array( get_field( 'certificado_de_excelencia_en_doctoralia_en_2018', $item->ID ), get_field( 'certificado_de_excelencia_en_doctoralia_en_2019', $item->ID )) ?>
+                echo "<div class='certificados'>";
 
-        <?php if( $certificados[0] || $certificados[1] ): ?>
+                    foreach ( $certificados as $certificado ) {
 
-            <h3>Certificados de excelencia en Doctoralia</h3>
+                        if( $certificado ) {
+                            echo "<img class='certificado' src='" . esc_url( $certificado['url'] ) . "' alt='' />";
+                        }
+                    }
+                echo "</div>";
+            }
 
-            <div class="certificados">
+            wp_reset_postdata();
 
-                <?php foreach ( $certificados as $certificado ): ?>
-
-                    <?php if( $certificado ): ?>
-                        <img class="certificado" src="<?php echo esc_url( $certificado['url'] ) ?>" alt="" />
-                    <?php endif ?>
-                
-                <?php endforeach ?>
-            </div>
-        <?php endif ?>
-
-        <?php wp_reset_postdata() ?>
-
-    <?php endforeach; ?>
-</section>
-
-<?php endif; ?>
+        }
+    echo "</section>";
+} ?>
 
 <div style="margin-bottom: -35px"></div>
 
