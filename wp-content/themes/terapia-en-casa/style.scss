@@ -549,8 +549,6 @@ p.saber-mas {
     }
 }
 
-// Mobile First
-
 @media only screen and (min-width: $mobile) {
 
     .wp-block-cover {
@@ -585,6 +583,111 @@ p.saber-mas {
 
     .wp-block-cover {
         padding: 75px 200px;
+    }
+}
+
+// ──────────────────────── //
+//     ÚLTIMAS ENTRADAS     //
+// ──────────────────────── //
+
+.wp-block-latest-posts {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: linear-gradient( 180deg, rgba(0,0,0,.25), rgba(255,255,255,.1)), url(img/fondos/ultimas-entradas.jpg) fixed no-repeat center;
+    background-size: cover;
+    border-top: 10px solid rgba(255,255,255,.5);
+    border-bottom: 10px solid rgba(255,255,255,.5);
+    padding: 35px 25px 0 !important;
+    margin: 50px 0;
+    position: relative;
+    width: 100%;
+
+    li {
+        background: white;
+        box-shadow: 0 10px 10px -10px $texto;
+        margin: 0 17.5px 35px !important;
+        width: 100% !important;
+        max-width: 300px;
+        height: auto;
+
+        .wp-block-latest-posts__featured-image {
+            margin-bottom: 10px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        a {
+            display: block;
+            color: $primario;
+            font-size: 30px;
+            font-family: "Amatic SC", cursive;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 2px;
+            line-height: 25px;
+            margin-top: 25px;
+            margin-bottom: 35px;
+            transition: .5s;
+
+            // Text ellipsis
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &:hover {
+                opacity: .75;
+            }
+        }
+
+        .wp-block-latest-posts__post-excerpt {
+            color: $texto;
+            font-size: 13px;
+            font-weight: normal;
+            text-align: left;
+            line-height: 25px;
+            padding: 0 25px 25px;
+            margin: 0;
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &::before {
+        content: 'Entradas recientes';
+        color: white;
+        font-size: 35px;
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        letter-spacing: 2px;
+        line-height: 55px;
+        margin: 0 0 50px;
+        position: relative;
+        z-index: 50;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: $mobile) {
+
+    .wp-block-latest-posts {
+        padding: 75px 25px 40px !important;
+        margin: 100px 0;
+
+        li .wp-block-latest-posts__post-excerpt {
+            font-size: 16px;
+            line-height: 30px;
+        }
+        
+        &::before {
+            font-size: 40px;
+            letter-spacing: 5px;
+            margin: 0 0 50px;
+        }
     }
 }
 
@@ -1059,10 +1162,16 @@ p.saber-mas {
                 letter-spacing: 2px;
                 line-height: 25px;
                 margin-bottom: 35px;
+                transition: .5s;
                 
+                // Text ellipsis
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+
+                &:hover {
+                    opacity: .75;
+                }
             }
 
             .extracto {

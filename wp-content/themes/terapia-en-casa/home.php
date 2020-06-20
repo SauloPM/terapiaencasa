@@ -22,14 +22,14 @@
 
                 echo "<div class='cuerpo'>";
 
+                    echo "<a class='titulo' href='" . get_permalink() . "'>";
                     the_title( "<h2>", "</h2>" );
+                    echo "</a>";
 
                     $contenido = get_the_content();
                     $contenido = strip_tags( $contenido );
                     $contenido = strlen( $contenido ) > 275 ? substr( $contenido, 0, 275 ) . "..." : $contenido;
                     echo "<p class='extracto'>" . $contenido  . "</p>";
-
-                    echo "<a class='saber-mas' href='" . get_permalink() . "'>Saber más</a>";
 
                 echo "</div>";
             echo "</div>";
