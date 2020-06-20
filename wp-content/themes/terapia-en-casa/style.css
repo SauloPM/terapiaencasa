@@ -981,7 +981,7 @@ p.saber-mas a:hover {
   font-size: 30px;
   letter-spacing: 2px;
   line-height: 25px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   transition: 0.5s;
   overflow: hidden;
   white-space: nowrap;
@@ -998,7 +998,7 @@ p.saber-mas a:hover {
   line-height: 25px;
   margin: 0;
   margin-right: auto;
-  margin-bottom: 25px;
+  margin-bottom: 0 !important;
 }
 .entradas .entrada .cuerpo .saber-mas {
   display: block;
@@ -1019,7 +1019,6 @@ p.saber-mas a:hover {
   .entradas .entrada .cuerpo .extracto {
     font-size: 16px;
     line-height: 30px;
-    margin-bottom: 35px;
   }
 }
 @media only screen and (min-width: 680px) {
