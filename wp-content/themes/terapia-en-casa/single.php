@@ -16,12 +16,14 @@
                 the_post_thumbnail( "full", array( "class" => "imagen-destacada" ));
             }
 
-            echo "<p>" . the_content() . "</p>";
+            echo the_content();
         }
 
         echo "</div>";
     }
 
 ?>
+
+<div style="margin-bottom: -35px"></div>
 
 <?php get_footer(); ?>
