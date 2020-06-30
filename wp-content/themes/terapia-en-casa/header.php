@@ -4,6 +4,8 @@
 
     <?php wp_head(); ?>
 
+    <title>Terapia en casa</title>
+
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
