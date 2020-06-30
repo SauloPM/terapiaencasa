@@ -60,6 +60,27 @@
                 );
             ?>
 
+            <!-- Menú de navegación en responsive -->
+            <div class="menu-responsive">
+
+                <div class="boton">
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                </div>
+
+                <div class="items">
+
+                    <?php wp_nav_menu( array( 'theme_location' => 'header-menu' )) ?>
+
+                    <div class="cierre">
+                        <div class="barra"></div>
+                        <div class="barra"></div>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- Logo -->
             <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg">
 

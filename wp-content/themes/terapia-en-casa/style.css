@@ -280,36 +280,175 @@ p.saber-mas a:hover {
 }
 
 #menu {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 50;
-  width: 100%;
-}
-#menu .items {
-  display: flex;
-  justify-content: space-evenly;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-#menu .items .menu-item {
-  font-size: 13px;
-  padding: 20px 0;
-}
-#menu .items .menu-item a {
-  color: white;
-  text-decoration: none;
-  transition: 0.5s;
-}
-#menu .items .menu-item a:hover {
-  opacity: 0.75;
+  display: none;
 }
 
-@media only screen and (min-width: 480px) {
+.menu-responsive .boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 0 12px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 50;
+  width: 50px;
+  height: 50px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.menu-responsive .boton .barra {
+  background: white;
+  margin: 3px 0;
+  width: 100%;
+  height: 1px;
+}
+.menu-responsive .boton:hover, .menu-responsive .boton:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+.menu-responsive .items {
+  list-style-type: none;
+  background: white;
+  box-shadow: 5px 0 5px -5px #323232;
+  padding: 12.5px 0;
+  position: fixed;
+  top: 0;
+  left: -350px;
+  bottom: 0;
+  z-index: 75;
+  width: 100%;
+  max-width: 300px;
+  transition: 0.5s;
+}
+.menu-responsive .items .menu .menu-item a {
+  display: block;
+  color: #323232;
+  text-decoration: none;
+  padding: 12.5px 25px;
+}
+.menu-responsive .items .menu .menu-item.current-menu-item a, .menu-responsive .items .menu .menu-item.current-menu-parent > a {
+  color: #af9b46;
+  pointer-events: none;
+}
+.menu-responsive .items .menu .menu-item .sub-menu .menu-item a {
+  padding-left: 50px;
+}
+.menu-responsive.abierto .items {
+  left: 0;
+}
+.menu-responsive .cierre {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  width: 25px;
+  height: 25px;
+  transform-origin: center;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.menu-responsive .cierre .barra {
+  background: #323232;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+.menu-responsive .cierre .barra:last-child {
+  transform: rotate(-45deg);
+}
+.menu-responsive .cierre .barra:first-child {
+  transform: rotate(45deg);
+}
+.menu-responsive .cierre.cierre:active .barra {
+  background: #af9b46;
+}
+
+@media only screen and (min-width: 768px) {
+  .menu-responsive {
+    display: none;
+  }
+
+  #menu {
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+  }
+  #menu .items {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
   #menu .items .menu-item {
     font-size: 16px;
+    padding: 20px 10px;
+    position: relative;
+  }
+  #menu .items .menu-item a {
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  #menu .items .menu-item a:hover {
+    opacity: 0.75;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu {
+    list-style-type: none;
+    background: white;
+    box-shadow: 0 5px 5px -5px #323232;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item {
+    padding: 0;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item a {
+    display: block;
+    color: #323232;
+    white-space: nowrap;
+    padding: 25px 25px 12.5px;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item a:hover {
+    color: #af9b46;
+    opacity: 1;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item:last-child a {
+    padding: 12.5px 25px 25px;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item.current-menu-item a {
+    color: #af9b46;
+    pointer-events: none;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item.current-menu-item::before {
+    display: none;
+  }
+  #menu .items .menu-item.menu-item-has-children:hover .sub-menu {
+    opacity: 1;
+    pointer-events: initial;
+  }
+  #menu .items .menu-item.current-menu-item::before, #menu .items .menu-item.current-menu-parent::before {
+    content: "";
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
   }
 }
 #portada {
@@ -344,7 +483,7 @@ p.saber-mas a:hover {
 }
 #portada .redes-sociales {
   position: absolute;
-  top: 84px;
+  top: 25px;
   right: 25px;
   z-index: 50;
 }
@@ -434,6 +573,11 @@ p.saber-mas a:hover {
   #portada {
     margin-bottom: 100px;
     height: 600px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #portada .redes-sociales {
+    top: 84px;
   }
 }
 .video {
@@ -553,8 +697,7 @@ p.saber-mas a:hover {
   text-decoration: none;
   letter-spacing: 2px;
   line-height: 25px;
-  margin-top: 25px;
-  margin-bottom: 35px;
+  margin: 25px 25px 35px;
   transition: 0.5s;
   overflow: hidden;
   white-space: nowrap;
@@ -920,8 +1063,12 @@ p.saber-mas a:hover {
 #footer .legal .menu-item a {
   transition: 0.5s;
 }
-#footer .legal .menu-item a:hover {
+#footer .legal .menu-item:hover a {
   color: #af9b46;
+}
+#footer .legal .menu-item.current_page_item a {
+  color: #af9b46;
+  pointer-events: none;
 }
 
 @media only screen and (min-width: 480px) {

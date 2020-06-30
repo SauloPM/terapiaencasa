@@ -40,6 +40,28 @@ $( window ).on( 'load', function() {
         }, 250);
     });
 
+    // ──────────── //
+    //     MENÚ     //
+    // ──────────── //
+
+    // Abrir menú responsive
+    $( document ).on( 'click', '.menu-responsive .boton', function() {
+
+        var menu = $( '.menu-responsive' );
+        
+        if ( menu.hasClass( 'abierto' ) ) {
+            menu.removeClass( 'abierto' );
+        } else {
+            menu.addClass( 'abierto' );
+        }
+    });
+
+    // Cerrar menú responsive
+    $( document ).on( 'click', '.menu-responsive .cierre', function() {
+
+        $( '.menu-responsive' ).removeClass( 'abierto' );
+    });
+
     // ──────────────── //
     //     CONTACTO     //
     // ──────────────── //
