@@ -6,7 +6,7 @@
 
     if ( have_posts() ) {
 
-        echo "<h2>Entradas</h2>";
+        echo "<h2>Blog</h2>";
 
         echo "<div class='entradas'>";
 
