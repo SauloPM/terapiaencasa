@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/3.0.0-alpha\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: es\n"
 "Project-Id-Version: Themes - Twenty Nineteen\n"
 
@@ -114,13 +114,13 @@ msgstr "M"
 msgid "Normal"
 msgstr "Normal"
 
-#: functions.php:117
-msgid "Small"
-msgstr "Pequeño"
-
 #: functions.php:118
 msgid "S"
 msgstr "S"
+
+#: functions.php:117
+msgid "Small"
+msgstr "Pequeño"
 
 #: functions.php:60 footer.php:37
 msgid "Footer Menu"
