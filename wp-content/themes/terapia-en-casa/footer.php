@@ -6,7 +6,7 @@
         <footer id="footer">
 
             <!-- Copyright -->
-            <div class="copyright">&copy; Terapia en casa <?php echo date("Y"); ?></div>
+            <div class="copyright">&copy; Terapiaencasa.es <?php echo date("Y"); ?></div>
 
             <!-- Menú de navegación -->
             <?php
