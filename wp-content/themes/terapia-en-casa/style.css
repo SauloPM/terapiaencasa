@@ -205,6 +205,14 @@ h3 {
   line-height: 30px;
 }
 
+h4 {
+  font-weight: normal;
+  text-decoration: underline;
+  margin-right: auto;
+  margin-bottom: 25px;
+  line-height: 30px;
+}
+
 @media only screen and (min-width: 480px) {
   h2 {
     font-size: 40px;
@@ -212,7 +220,8 @@ h3 {
     margin: 0 0 50px;
   }
 
-  h3 {
+  h3,
+h4 {
     margin-bottom: 35px;
   }
 }
@@ -259,14 +268,6 @@ p.saber-mas a:hover {
     max-width: 1200px;
   }
 }
-.margin-bottom-0 {
-  margin-bottom: 0 !important;
-}
-
-.margin-right-25 {
-  margin-right: 25px !important;
-}
-
 .padding-top-0 {
   padding-top: 0 !important;
 }
@@ -275,8 +276,20 @@ p.saber-mas a:hover {
   margin-top: 35px !important;
 }
 
+.margin-right-25 {
+  margin-right: 25px !important;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
 .margin-bottom-35 {
   margin-bottom: 35px !important;
+}
+
+.margin-bottom-100 {
+  margin-bottom: 100px !important;
 }
 
 #menu {
@@ -379,7 +392,7 @@ p.saber-mas a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 50;
+    z-index: 75;
     width: 100%;
   }
   #menu .items {
@@ -420,15 +433,14 @@ p.saber-mas a:hover {
   #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item a {
     display: block;
     color: #323232;
-    white-space: nowrap;
-    padding: 25px 25px 12.5px;
+    padding: 15px 15px 7.5px;
   }
   #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item a:hover {
     color: #af9b46;
     opacity: 1;
   }
   #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item:last-child a {
-    padding: 12.5px 25px 25px;
+    padding: 7.5px 15px 15px;
   }
   #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item.current-menu-item a {
     color: #af9b46;
@@ -449,6 +461,15 @@ p.saber-mas a:hover {
     bottom: -1px;
     width: 100%;
     height: 1px;
+  }
+}
+@media only screen and (min-width: 1250px) {
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item a {
+    white-space: nowrap;
+    padding: 25px 25px 12.5px;
+  }
+  #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item:last-child a {
+    padding: 12.5px 25px 25px;
   }
 }
 #portada {
@@ -580,31 +601,47 @@ p.saber-mas a:hover {
     top: 84px;
   }
 }
-.video {
-  box-shadow: 0 0 0 10px rgba(230, 230, 230, 0.5);
-  padding-top: 56.25%;
-  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-  margin: 45px auto;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+.wp-block-embed__wrapper {
+  text-align: center;
 }
-.video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+.wp-block-embed__wrapper iframe {
+  box-shadow: 0 0 0 10px rgba(230, 230, 230, 0.5);
+  margin: 45px auto 60px;
 }
 
-@media only screen and (min-width: 768px) {
-  .video {
-    padding-top: 280px;
-    width: 498px;
-  }
+.wp-block-table {
+  overflow-x: auto;
 }
+.wp-block-table table {
+  display: block;
+  border: 1px solid #c8c8c8;
+  padding: 25px;
+  border-collapse: collapse;
+}
+.wp-block-table table tbody {
+  overflow-x: auto;
+}
+.wp-block-table table tr td {
+  border-right: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+  line-height: 30px;
+  padding: 10px;
+}
+.wp-block-table table tr td:last-child {
+  border-right: none;
+}
+.wp-block-table table tr:first-child td {
+  font-weight: bold;
+}
+.wp-block-table table tr:last-child td {
+  border-bottom: none;
+}
+.wp-block-table figcaption {
+  color: #c8c8c8;
+  font-size: 12px;
+  margin: 5px 0 0 5px;
+}
+
 .wp-block-cover {
   display: flex;
   align-items: center;
@@ -1189,6 +1226,20 @@ p.saber-mas a:hover {
   color: #af9b46;
   text-align: left;
   width: 100%;
+}
+.post .fotografia {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #c8c8c8;
+  margin: 10px auto 45px;
+  width: 200px;
+  height: 200px;
+}
+.post .autor {
+  margin-bottom: 50px;
 }
 
 #psicologos .fotografia {

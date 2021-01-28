@@ -211,6 +211,14 @@ h3 {
     line-height: 30px;
 }
 
+h4 {
+    font-weight: normal;
+    text-decoration: underline;
+    margin-right: auto;
+    margin-bottom: 25px;
+    line-height: 30px;
+}
+
 @media only screen and (min-width: $mobile) {
 
     h2 {
@@ -219,7 +227,8 @@ h3 {
         margin: 0 0 50px;
     }
 
-    h3 {
+    h3,
+    h4 {
         margin-bottom: 35px;
     }
 }
@@ -276,14 +285,6 @@ p.saber-mas {
 //     HELPERS     //
 // ─────────────── //
 
-.margin-bottom-0 {
-    margin-bottom: 0 !important;
-}
-
-.margin-right-25 {
-    margin-right: 25px !important;
-}
-
 .padding-top-0 {
     padding-top: 0 !important;
 }
@@ -292,8 +293,20 @@ p.saber-mas {
     margin-top: 35px !important;
 }
 
+.margin-right-25 {
+    margin-right: 25px !important;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
 .margin-bottom-35 {
     margin-bottom: 35px !important;
+}
+
+.margin-bottom-100 {
+    margin-bottom: 100px !important;
 }
 
 // ──────────── //
@@ -418,7 +431,7 @@ p.saber-mas {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 50;
+        z-index: 75;
         width: 100%;
     
         .items {
@@ -465,8 +478,7 @@ p.saber-mas {
                             a {
                                 display: block;
                                 color: $texto;
-                                white-space: nowrap;
-                                padding: 25px 25px 12.5px;
+                                padding: 15px 15px 7.5px;
     
                                 &:hover {
                                     color: $primario;
@@ -476,7 +488,7 @@ p.saber-mas {
                             }
     
                             &:last-child a {
-                                padding: 12.5px 25px 25px;
+                                padding: 7.5px 15px 15px;
                             }
     
                             &.current-menu-item {
@@ -512,6 +524,21 @@ p.saber-mas {
                     height: 1px;
                 }
             }
+        }
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+
+    #menu .items .menu-item.menu-item-has-children .sub-menu .menu-item {
+        
+        a {
+            white-space: nowrap;
+            padding: 25px 25px 12.5px;
+        }
+    
+        &:last-child a {
+            padding: 12.5px 25px 25px;
         }
     }
 }
@@ -668,32 +695,59 @@ p.saber-mas {
 //     VIDEO     //
 // ───────────── //
 
-.video {
-    box-shadow: 0 0 0 10px rgba(230,230,230,.5);
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-    margin: 45px auto;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+.wp-block-embed__wrapper {
+    text-align: center;
 
     iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
+        box-shadow: 0 0 0 10px rgba(230,230,230,.5);
+        margin: 45px auto 60px;
     }
 }
 
-// Mobile First
+// ───────────── //
+//     TABLA     //
+// ───────────── //
 
-@media only screen and (min-width: $tablet) {
+.wp-block-table {
+    overflow-x: auto;
+    
+    table {
+        display: block;
+        border: 1px solid $gris-claro;
+        padding: 25px;
+        border-collapse: collapse;
 
-    .video {
-        padding-top: 280px;
-        width: 498px;
+        tbody {
+            overflow-x: auto;
+        }
+
+        tr {
+
+            td {
+                border-right: 1px solid $gris-claro;
+                border-bottom: 1px solid $gris-claro;
+                line-height: 30px;
+                padding: 10px;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+
+            &:first-child td {
+                font-weight: bold;
+            }
+
+            &:last-child td {
+                border-bottom: none;
+            }
+        }
+    }
+
+    figcaption {
+        color: $gris-claro;
+        font-size: 12px;
+        margin: 5px 0 0 5px;
     }
 }
 
@@ -1431,6 +1485,22 @@ p.saber-mas {
         color: $primario;
         text-align: left;
         width: 100%;
+    }
+
+    .fotografia {
+        display: block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px $gris-claro;
+        margin: 10px auto 45px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .autor {
+        margin-bottom: 50px;
     }
 }
 
