@@ -9,10 +9,32 @@
     <?php endwhile; ?>
 <?php endif; ?>
 
+<div style="margin-bottom: -35px"></div>
+
+<!-- ─────────────────── -->
+<!--     TESTIMONIOS     -->
+<!-- ─────────────────── -->
+
+<?php
+
+    if ( get_field( 'incluir_testimonios' )) {
+        
+        include 'shared/testimonios.php';
+    }
+
+?>
+
 <!-- ──────────────── -->
 <!--     CONTACTO     -->
 <!-- ──────────────── -->
 
-<?php include 'shared/formulario-contacto.php' ?>
+<?php
+
+    if ( get_field( 'incluir_formulario_de_contacto' )) {
+        
+        include 'shared/formulario-contacto.php';
+    }
+
+?>
 
 <?php get_footer(); ?>
