@@ -27,6 +27,8 @@ wp-content/plugins/hello.php
 /sitemap.xml.gz
 
 # SASS
+wp-content/themes/terapia-en-casa/style.css
+wp-content/themes/terapia-en-casa/style.css.map
 wp-content/themes/twentynineteen-child/style.css.map
 
 # WordPress » Plugin "All in One"
