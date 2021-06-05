@@ -4,10 +4,12 @@
 
     <?php wp_head(); ?>
 
-    <title>Terapia en casa</title>
+    <title>Terapia psicológica online | Primera sesión gratis | Respuesta en menos de 24h</title>
+
+    <meta name="description" content="Terapia psicólogica de calidad y personalizada desde el confort de tu casa. Ahorra tiempo y dinero. La primera consulta es totalmente gratis, sin compromiso. Podemos ayudarte.">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ──────────────────────── -->
     <!--     GOOGLE ANALYTICS     -->
