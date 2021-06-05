@@ -99,27 +99,27 @@ class Widget_Redes_Sociales extends WP_Widget {
 
         // Se renderiza un listado de enlaces a las redes sociales
         if ( $facebook ) {
-            echo "<a class='red-social facebook' href='" . $facebook . "' target='_blank'>";
+            echo "<a class='red-social facebook' href='" . $facebook . "' target='_blank' title='Enlace al perfil oficial de Facebook de Terapia en casa'>";
             echo    "<i class='icono fa fa-facebook'></i>";
             echo "</a>";
         }
         if ( $instagram ) {
-            echo "<a class='red-social instagram' href='" . $instagram . "' target='_blank'>";
+            echo "<a class='red-social instagram' href='" . $instagram . "' target='_blank' title='Enlace al perfil oficial de Instagram de Terapia en casa'>";
             echo    "<i class='icono fa fa-instagram'></i>";
             echo "</a>";
         }
         if ( $twitter ) {
-            echo "<a class='red-social twitter' href='" . $twitter . "' target='_blank'>";
+            echo "<a class='red-social twitter' href='" . $twitter . "' target='_blank' title='Enlace al perfil oficial de Twitter de Terapia en casa'>";
             echo    "<i class='icono fa fa-twitter'></i>";
             echo "</a>";
         }
         if ( $youtube ) {
-            echo "<a class='red-social youtube' href='" . $youtube . "' target='_blank'>";
+            echo "<a class='red-social youtube' href='" . $youtube . "' target='_blank' title='Enlace al perfil oficial de YouTube de Terapia en casa'>";
             echo    "<i class='icono fa fa-youtube-play'></i>";
             echo "</a>";
         }
         if ( $linkedin ) {
-            echo "<a class='red-social linkedin' href='" . $linkedin . "' target='_blank'>";
+            echo "<a class='red-social linkedin' href='" . $linkedin . "' target='_blank' title='Enlace al perfil oficial de LinkedIn de Terapia en casa'>";
             echo    "<i class='icono fa fa-linkedin'></i>";
             echo "</a>";
         }
