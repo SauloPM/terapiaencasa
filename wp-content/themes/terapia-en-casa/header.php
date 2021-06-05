@@ -82,7 +82,7 @@
             </div>
 
             <!-- Logo -->
-            <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg">
+            <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/casa.svg" alt="Logotipo de Terapia en casa">
 
             <!-- Título -->
             <h1 class="titulo">Terapia en casa</h1>
@@ -92,11 +92,11 @@
 
             <!-- Nubes -->
             <div class="nubes">
-                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube1.png">
-                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube2.png">
-                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube3.png">
-                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube4.png">
-                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube5.png">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube1.png" alt="Imagen de una nube">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube2.png" alt="Imagen de una nube">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube3.png" alt="Imagen de una nube">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube4.png" alt="Imagen de una nube">
+                <img class="nube" src="<?php echo get_template_directory_uri(); ?>/img/nube5.png" alt="Imagen de una nube">
             </div>
 
         </header>
