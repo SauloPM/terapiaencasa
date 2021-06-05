@@ -14,7 +14,7 @@ if ( ! defined( 'WPINC' ) ) {
         <div class="cli_sub_tab_content" data-id="shortcodes" style="display:block;">
             <div style="font-size: 14px;">
         	<h3><?php _e('Cookie bar shortcodes', 'cookie-law-info'); ?></h3>
-            <?php _e('You can enter the shortcodes in the "message" field of the Cookie Law Info bar. They add nicely formatted buttons and/or links into the cookie bar, without you having to add any HTML.', 'cookie-law-info'); ?>
+            <?php _e('You can insert the shortcodes in the Settings > Customise Cookie Bar > Cookie bar > Message to get it rendered on the cookie consent bar of your site.', 'cookie-law-info'); ?>
         	</div>
             <ul class="cli-shortcodes">
             	<li>
@@ -106,7 +106,7 @@ if ( ! defined( 'WPINC' ) ) {
                     <img src="<?php echo $admin_img_path;?>documentation.png">
                     <h3><?php _e('Documentation', 'cookie-law-info'); ?></h3>
                     <p><?php _e('Refer to our documentation to set and get started', 'cookie-law-info'); ?></p>
-                    <a target="_blank" href="http://cookielawinfo.com/user-guide/" class="button button-primary">
+                    <a target="_blank" href="https://www.webtoffee.com/gdpr-cookie-consent-plugin-basic-version-user-guide/" class="button button-primary">
                         <?php _e('Documentation', 'cookie-law-info'); ?>        
                     </a>
                 </li>

@@ -69,6 +69,7 @@ class Cookie_Law_Info {
 	 *
 	 * @since    1.6.6
 	 */
+	public static $db_initial_version = '1.9.4';
 	public function __construct() 
 	{
 		if(defined( 'CLI_VERSION' )) 
@@ -77,7 +78,7 @@ class Cookie_Law_Info {
 		} 
 		else 	
 		{
-			$this->version = '1.9.4';
+			$this->version = '2.0.3';
 		}
 		$this->plugin_name = 'cookie-law-info';
 
@@ -112,6 +113,19 @@ class Cookie_Law_Info {
 		 * core plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cookie-law-info-loader.php';
+		
+		/**
+		 * Webtoffee Security Library
+		 * Includes Data sanitization, Access checking
+		 */
+		
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wt-security-helper.php';
+		
+		/**
+		 * The class which integrates Cookieyes services to the plugin
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cookie-law-info-cookieyes.php';
+		
 
 		/**
 		 * The class responsible for defining internationalization functionality
@@ -119,6 +133,17 @@ class Cookie_Law_Info {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cookie-law-info-i18n.php';
 
+		/**
+		 * The class responsible for handling multi language features
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cookie-law-info-languages.php';
+
+		/**
+		 * The class which integrates Cookieyes services to the plugin
+		 */
+		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cookie-law-info-cookieyes.php';
+		
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
@@ -173,10 +198,7 @@ class Cookie_Law_Info {
 
 		
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu',11); /* Adding admin menu */		
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'add_meta_box'); /* Adding custom meta box */
-		$this->loader->add_action( 'save_post', $plugin_admin, 'save_custom_metaboxes');/* Saving meta box data */
-		$this->loader->add_action( 'manage_edit-cookielawinfo_columns', $plugin_admin, 'manage_edit_columns'); /* Customizing listing column */
-		$this->loader->add_action( 'manage_posts_custom_column', $plugin_admin, 'manage_posts_custom_columns');
+		
 		
 		$this->loader->add_action('admin_menu',$plugin_admin,'remove_cli_addnew_link');
 
@@ -207,11 +229,10 @@ class Cookie_Law_Info {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $plugin_public,'register_custom_post_type');
 		$this->loader->add_action( 'template_redirect', $plugin_public,'cli_set_category_cookies');
 
 		$plugin_public->common_modules();
-
+ 
 		//below hook's functions needs update
 		$this->loader->add_action( 'init',$plugin_public,'other_plugin_compatibility');
 		$this->loader->add_action( 'wp_footer',$plugin_public,'cookielawinfo_inject_cli_script');
@@ -361,7 +382,7 @@ class Cookie_Law_Info {
 			'border' 						=> '#b1a6a6c2',
 			'border_on'						=> true,
 			'bar_style'				=> array(),
-			'button_1_text'					=> 'ACCEPT',
+			'button_1_text'					=> 'Accept',
 			'button_1_url' 					=> '#',
 			'button_1_action' 				=> '#cookie_action_close_header',
 			'button_1_link_colour' 			=> '#fff',
@@ -384,27 +405,37 @@ class Cookie_Law_Info {
 			'button_2_hidebar'					=>false,
 			'button_2_style'				=> array(),
 	            
-	        'button_3_text'					=> 'REJECT',
+	        'button_3_text'					=> 'Reject All',
 			'button_3_url' 					=> '#',
 			'button_3_action' 				=> '#cookie_action_close_header_reject',
-			'button_3_link_colour' 			=> '#fff',
+			'button_3_link_colour' 			=> '#333333',
 			'button_3_new_win' 				=> false,
 			'button_3_as_button' 			=> true,
-			'button_3_button_colour' 		=> '#3566bb',
+			'button_3_button_colour' 		=> '#dedfe0',
 			'button_3_button_size' 			=> 'medium',
 			'button_3_style'				=> array(),
 
-	        'button_4_text'					=> 'Cookie settings',
+	        'button_4_text'					=> 'Cookie Settings',
 			'button_4_url' 					=> '#',
 			'button_4_action' 				=> '#cookie_action_settings',
 			'button_4_link_colour' 			=> '#333333',
 			'button_4_new_win' 				=> false,
-			'button_4_as_button' 			=> false,
-			'button_4_button_colour' 		=> '#000',
+			'button_4_as_button' 			=> true,
+			'button_4_button_colour' 		=> '#dedfe0',
 			'button_4_button_size' 			=> 'medium',
 			'button_4_style'				=> array(),
 			'button_5_style'				=> array(),   
-			   
+
+			'button_7_text'					=> 'Accept All',
+			'button_7_url' 					=> '#',
+			'button_7_action' 				=> '#cookie_action_close_header',
+			'button_7_link_colour' 			=> '#fff',
+			'button_7_new_win' 				=> false,
+			'button_7_as_button' 			=> true,
+			'button_7_button_colour' 		=> '#61a229',
+			'button_7_button_size' 			=> 'medium',
+			'button_7_style'				=> array(),	
+
 			'font_family' 					=> 'inherit', // Pick the family, not the easy name (see helper function below)
 			'header_fix'                    => false,
 			'is_on' 						=> true,
@@ -415,7 +446,7 @@ class Cookie_Law_Info {
 			'notify_div_id' 				=> '#cookie-law-info-bar',
 			'notify_position_horizontal'	=> 'right',	// left | right
 			'notify_position_vertical'		=> 'bottom', // 'top' = header | 'bottom' = footer
-			'notify_message'				=> addslashes ( '<div class="cli-bar-container cli-style-v2"><div class="cli-bar-message">We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept”, you consent to the use of ALL the cookies.</div><div class="cli-bar-btn_container">[cookie_settings margin="0px 10px 0px 5px"][cookie_button]</div></div>'),
+			'notify_message'				=> addslashes ( '<div class="cli-bar-container cli-style-v2"><div class="cli-bar-message">We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept All”, you consent to the use of ALL the cookies. However, you may visit "Cookie Settings" to provide a controlled consent.</div><div class="cli-bar-btn_container">[cookie_settings margin="0px 5px 0px 0px"][cookie_accept_all]</div></div>'),
 			'scroll_close'                  => false,
 			'scroll_close_reload'           => false,
 	        'accept_close_reload'           => false,
@@ -480,7 +511,12 @@ class Cookie_Law_Info {
 	    'button_4_button_colour'    => $settings['button_4_button_colour'],
 	    'button_4_button_hover'     => (self::su_hex_shift( $settings['button_4_button_colour'], 'down', 20 )),
 	    'button_4_link_colour'      => $settings['button_4_link_colour'],
-	    'button_4_as_button'      => $settings['button_4_as_button'],            
+	    'button_4_as_button'      => $settings['button_4_as_button'],
+		'button_7_button_colour'    => $settings['button_7_button_colour'],
+	    'button_7_button_hover'     => (self::su_hex_shift( $settings['button_7_button_colour'], 'down', 20 )),
+	    'button_7_link_colour'      => $settings['button_7_link_colour'],
+	    'button_7_as_button'      => $settings['button_7_as_button'],
+		'button_7_new_win'      => $settings['button_7_new_win'],            
 	    'font_family'         => $settings['font_family'],
 	    'header_fix'                    => $settings['header_fix'],
 	    'notify_animate_hide'     => $settings['notify_animate_hide'],
@@ -545,6 +581,8 @@ class Cookie_Law_Info {
 			case 'button_3_as_button':
 	        case 'button_4_new_win':
 			case 'button_4_as_button':
+			case 'button_7_new_win':
+			case 'button_7_as_button':
 			case 'scroll_close':
 			case 'scroll_close_reload':
 	        case 'accept_close_reload':
@@ -590,6 +628,8 @@ class Cookie_Law_Info {
 			case 'button_3_button_colour':   
 	        case 'button_4_link_colour':
 			case 'button_4_button_colour': 
+			case 'button_7_link_colour':
+			case 'button_7_button_colour':  
 				if ( preg_match( '/^#[a-f0-9]{6}|#[a-f0-9]{3}$/i', $value ) ) 
 				{
 					// Was: '/^#([0-9a-fA-F]{1,2}){3}$/i' which allowed e.g. '#00dd' (error)
@@ -611,19 +651,26 @@ class Cookie_Law_Info {
 			// URLs only:
 			case 'button_1_url':
 			case 'button_2_url':
-	                case 'button_3_url':
-	                case 'button_4_url':                    
-				$ret = esc_url( $value );
-				break;
+			case 'button_3_url':
+			case 'button_4_url': 
+			case 'button_7_url':                        
+			$ret = esc_url( $value );
+			break;
 			// Basic sanitisation for all the rest:
 			default:
-				$ret = sanitize_text_field( $value );
+				$ret = self::wt_cli_clean( $value );
 				break;
 		}
 	        if(('is_eu_on' === $key || 'logging_on' == $key) && 'fffffff' === $ret) $ret = false;
 		return $ret;
 	}
-
+	public static function wt_cli_clean( $var ){
+		if ( is_array( $var ) ) {
+			return array_map( 'self::wt_cli_clean' , $var );
+		  } else {
+			return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
+		  }
+	}
 	public static function get_non_necessary_cookie_ids()
 	{
 
@@ -947,7 +994,7 @@ class Cookie_Law_Info {
 	* @since  1.8.9
 	* @return bool
 	*/
-	public static function maybe_first_time_install()
+	public static function check_for_upgrade()
     {
 		$plugin_settings = get_option(CLI_SETTINGS_FIELD);
 		if( $plugin_settings === false ) {
@@ -959,6 +1006,15 @@ class Cookie_Law_Info {
 			return true;
 		}
 		return false;
+	}
+	public static function maybe_first_time_install()
+    {	
+		$maybe_first_time = false;
+		$activation_transient = wp_validate_boolean( get_transient('_wt_cli_first_time_activation') ); 
+		if( $activation_transient === true ) {
+			$maybe_first_time = true;
+		}
+		return $maybe_first_time;
 	}
 	/**
 	* Return js options

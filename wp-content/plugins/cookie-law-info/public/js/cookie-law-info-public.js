@@ -4,13 +4,15 @@ CLI_ACCEPT_COOKIE_EXPIRE =(typeof CLI_ACCEPT_COOKIE_EXPIRE !== 'undefined' ? CLI
 CLI_COOKIEBAR_AS_POPUP=(typeof CLI_COOKIEBAR_AS_POPUP !== 'undefined' ? CLI_COOKIEBAR_AS_POPUP : false);
 var CLI_Cookie={
 	set: function (name, value, days) {
+		var secure = "";
+		if ( true === Boolean( Cli_Data.secure_cookies ) ) secure = ";secure";
         if (days) {
             var date = new Date();
             date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
             var expires = "; expires=" + date.toGMTString();
         } else
             var expires = "";
-        document.cookie = name + "=" + value + expires + "; path=/";
+        document.cookie = name + "=" + value + secure + expires + "; path=/";
         if(days<1)
         {
             host_name=window.location.hostname;
@@ -18,10 +20,10 @@ var CLI_Cookie={
             if(host_name.indexOf("www")!=1)
 			{  
 			   var host_name_withoutwww=host_name.replace('www','');
-			   document.cookie = name + "=" + value + expires + "; path=/; domain="+host_name_withoutwww+";";
+			   document.cookie = name + "=" + value + secure + expires + "; path=/; domain="+host_name_withoutwww+";";
 			}
             host_name=host_name.substring(host_name.lastIndexOf(".", host_name.lastIndexOf(".")-1));
-            document.cookie = name + "=" + value + expires + "; path=/; domain="+host_name+";";
+            document.cookie = name + "=" + value + secure + expires + "; path=/; domain="+host_name+";";
         }
     },
     read: function (name) {
@@ -86,9 +88,9 @@ var CLI=
         this.main_button=jQuery('.cli-plugin-main-button');
         this.main_link = jQuery('.cli-plugin-main-link');
         this.reject_link = jQuery('.cookie_action_close_header_reject');
-		    this.delete_link=jQuery(".cookielawinfo-cookie-delete");
-	    	this.settings_button=jQuery('.cli_settings_button');
-
+		this.delete_link=jQuery(".cookielawinfo-cookie-delete");
+		this.settings_button=jQuery('.cli_settings_button');
+		this.accept_all_button = jQuery('.wt-cli-accept-all-btn');
         if(this.settings.cookie_bar_as=='popup')
     	{
     		CLI_COOKIEBAR_AS_POPUP=true;
@@ -119,8 +121,14 @@ var CLI=
 		return false;
 	},
 	attachEvents:function()
-	{
-		jQuery('.cli_action_button').click(function(e){
+	{	
+		jQuery(document).on('click','.wt-cli-privacy-btn',function(e){
+			e.preventDefault();
+			CLI.accept_close();
+			CLI.settingsPopUpClose();
+		});
+
+		jQuery('.cli_action_button').on("click", function(e) {
 			e.preventDefault();
 			var elm=jQuery(this);
 			var button_action=elm.attr('data-cli_action');
@@ -131,8 +139,15 @@ var CLI=
 				CLI.accept_close();
 				new_window= Boolean( CLI.settings.button_1_new_win ) ? true : false;
 
-			}else if(button_action=='reject')
-			{
+			}
+			else if( button_action == 'accept_all') {
+				CLI.enableAllCookies();
+				CLI.accept_close();
+				new_window=CLI.settings.button_7_new_win ? true : false;
+			}
+			else if(button_action=='reject')
+			{	
+				CLI.disableAllCookies();
 				CLI.reject_close();
 				new_window= Boolean( CLI.settings.button_3_new_win ) ? true : false;
 			}
@@ -185,7 +200,7 @@ var CLI=
 			}
 			
         });
-    	jQuery('.cli-user-preference-checkbox').click(function(){
+    	jQuery('.cli-user-preference-checkbox').on("click", function(e) {
 			var dataID = jQuery(this).attr('data-id');
 			var currentToggleElm = jQuery('.cli-user-preference-checkbox[data-id='+dataID+']');
         	if(jQuery(this).is(':checked'))
@@ -213,19 +228,19 @@ var CLI=
 			jQuery("#cookie-law-info-bar").css({'opacity':.1});
 			if(!jQuery('.cli-settings-mobile').is(':visible'))
 			{
-				CLI.settingsModal.find('.cli-nav-link:eq(0)').click();
+				CLI.settingsModal.find('.cli-nav-link:eq(0)').trigger("click");
 			}
 	    });
-		jQuery('#cliModalClose').click(function(){
+		jQuery('#cliModalClose').on("click", function(e) {
 			CLI.settingsPopUpClose();
 		});
-		CLI.settingsModal.click(function(e){
+		CLI.settingsModal.on("click", function(e) {
 			if(!(document.getElementsByClassName('cli-modal-dialog')[0].contains(e.target)))
 			{
 				CLI.settingsPopUpClose();
 			}
 		});
-		jQuery('.cli_enable_all_btn').click(function(){
+		jQuery('.cli_enable_all_btn').on("click", function(e) {
 			var cli_toggle_btn = jQuery(this);
 			var enable_text = cli_toggle_btn.attr('data-enable-text');
 			var disable_text= cli_toggle_btn.attr('data-disable-text');
@@ -310,7 +325,7 @@ var CLI=
 			};
 			Trunc.addReadmore(el);
 			Trunc.truncateText(el);
-			jQuery('a.cli-privacy-readmore').click(function(e){
+			jQuery('a.cli-privacy-readmore').on("click", function(e) {
 				e.preventDefault();
 				if(jQuery('.cli-privacy-overview').hasClass('cli-collapsed'))
 				{	
@@ -331,7 +346,7 @@ var CLI=
 	},
 	attachDelete:function()
 	{
-		this.delete_link.click(function () {
+		this.delete_link.on("click", function(e) {
 	        CLI_Cookie.erase(CLI_ACCEPT_COOKIE_NAME);
 	        for(var k in Cli_Data.nn_cookie_ids) 
 	        {
@@ -349,47 +364,66 @@ var CLI=
 	    if( Boolean( this.settings.button_1_as_button ) ) 
 	    {	
 	        this.main_button.css('background-color',this.settings.button_1_button_colour);
-	        this.main_button.hover(function () {
-	            jQuery(this).css('background-color',CLI.settings.button_1_button_hover);
-	        },function (){
-	            jQuery(this).css('background-color',CLI.settings.button_1_button_colour);
-	        });
+			
+			this.main_button.on('mouseenter', function(){
+				jQuery(this).css('background-color',CLI.settings.button_1_button_hover);
+			})
+			.on('mouseleave', function(){
+				jQuery(this).css('background-color',CLI.settings.button_1_button_colour);
+			});
 	    }
 
 	    /* [cookie_link] */    
 	    this.main_link.css('color',this.settings.button_2_link_colour);
 	    if( Boolean( this.settings.button_2_as_button ) ) 
 	    {
-	        this.main_link.css('background-color',this.settings.button_2_button_colour);
-	        this.main_link.hover(function () {
-	            jQuery(this).css('background-color',CLI.settings.button_2_button_hover);
-	        },function (){
-                jQuery(this).css('background-color',CLI.settings.button_2_button_colour);
-            });
+			this.main_link.css('background-color',this.settings.button_2_button_colour);
+
+			this.main_link.on('mouseenter', function(){
+				jQuery(this).css('background-color',CLI.settings.button_2_button_hover);
+			})
+			.on('mouseleave', function(){
+				jQuery(this).css('background-color',CLI.settings.button_2_button_colour);
+			});
+	        
 	    }
 	    /* [cookie_reject] */	    
 		this.reject_link.css('color',this.settings.button_3_link_colour);
 	    if( Boolean( this.settings.button_3_as_button ) ) 
 	    {	
 		
-	        this.reject_link.css('background-color',this.settings.button_3_button_colour);
-	        this.reject_link.hover(function () {
-	            jQuery(this).css('background-color',CLI.settings.button_3_button_hover);
-	        },function () {
-	            jQuery(this).css('background-color',CLI.settings.button_3_button_colour);
-	        });
+			this.reject_link.css('background-color',this.settings.button_3_button_colour);
+			this.reject_link.on('mouseenter', function(){
+				jQuery(this).css('background-color',CLI.settings.button_3_button_hover);
+			})
+			.on('mouseleave', function(){
+				jQuery(this).css('background-color',CLI.settings.button_3_button_colour);
+			});
 		}
 		/* [cookie_settings] */	    
 	    this.settings_button.css('color',this.settings.button_4_link_colour);
 	    if( Boolean( this.settings.button_4_as_button ) ) 
 	    {
-	        this.settings_button.css('background-color',this.settings.button_4_button_colour);
-	        this.settings_button.hover(function () {
-	            jQuery(this).css('background-color',CLI.settings.button_4_button_hover);
-	        },function () {
-	            jQuery(this).css('background-color',CLI.settings.button_4_button_colour);
-	        });
+			this.settings_button.css('background-color',this.settings.button_4_button_colour);
+			this.settings_button.on('mouseenter', function(){
+				jQuery(this).css('background-color',CLI.settings.button_4_button_hover);
+			})
+			.on('mouseleave', function(){
+				jQuery(this).css('background-color',CLI.settings.button_4_button_colour);
+			});
 	    }
+		/* [cookie_accept_all] */
+		this.accept_all_button.css('color',this.settings.button_7_link_colour);
+		if(this.settings.button_7_as_button) 
+		{
+			this.accept_all_button.css('background-color',this.settings.button_7_button_colour);
+			this.accept_all_button.on('mouseenter', function(){
+				jQuery(this).css('background-color',CLI.settings.button_7_button_hover);
+			})
+			.on('mouseleave', function(){
+				jQuery(this).css('background-color',CLI.settings.button_7_button_colour);
+			});
+		}
 	},
 	toggleBar:function()
 	{
@@ -424,7 +458,7 @@ var CLI=
 			}
 		} 
 		
-	    this.showagain_elm.click(function (e) {
+	    this.showagain_elm.on("click", function(e) {
 	        e.preventDefault();
 	        CLI.showagain_elm.slideUp(CLI.settings.animate_speed_hide,function() 
 	        {
@@ -829,6 +863,20 @@ var CLI=
 			}
 		});
 	},
+	disableAllCookies:function()
+    {	
+    	jQuery('.cli-user-preference-checkbox').each(function(){
+
+			var cli_chkbox_elm=jQuery(this);
+			var cli_chkbox_data_id=cli_chkbox_elm.attr('data-id');
+			cliCategorySlug = cli_chkbox_data_id.replace('checkbox-','');			
+			if(Cli_Data.strictlyEnabled.indexOf(cliCategorySlug) === -1)
+			{
+				cli_chkbox_elm.prop('checked',false);
+				CLI_Cookie.set('cookielawinfo-'+cli_chkbox_data_id,'no',CLI_ACCEPT_COOKIE_EXPIRE);
+			}
+		});
+	},
 	hideCookieBarOnClose: function() {
 		jQuery(document).on('click','.cli_cookie_close_button',function(e){
 			e.preventDefault();
@@ -899,26 +947,26 @@ var CLI=
 		cliConsent = window.btoa(cliConsent);
 		CLI_Cookie.set(CLI_PREFERNCE_COOKIE,cliConsent,CLI_ACCEPT_COOKIE_EXPIRE);
 	},
-	cookieLawInfoRunCallBacks:function()
-	{		
-		this.checkCategories();
-		if(CLI_Cookie.read(CLI_ACCEPT_COOKIE_NAME)=='yes')		
-    	{	
-			if("function" == typeof CookieLawInfo_Accept_Callback){
-				CookieLawInfo_Accept_Callback(); 
-			}
-		}
-	},
 	addStyleAttribute:function()
 	{
 		var bar=this.bar_elm;
 		var styleClass='';
 		if(jQuery(bar).find('.cli-bar-container').length > 0)
 		{
-			styleClass=jQuery('.cli-bar-container').attr('class');
-			styleClass=jQuery.trim(styleClass.replace('cli-bar-container',''));
+			styleClass	=	jQuery('.cli-bar-container').attr('class');
+			styleClass	=	styleClass.replace('cli-bar-container','');
+			styleClass	=	styleClass.trim();
 			jQuery(bar).attr('data-cli-style',styleClass);
 		}
+	},
+	getParameterByName: function( name, url ) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, '\\$&');
+		var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, ' '));
 	},
 	CookieLawInfo_Callback: function( enableBar, enableBlocking ) {
 		enableBar = typeof enableBar !== 'undefined' ? enableBar : true;
@@ -953,6 +1001,7 @@ var cliBlocker =
 	ccpaApplicable : false,
 	ccpaBarEnabled: false,
 	cliShowBar: true ,
+	isBypassEnabled: CLI.getParameterByName('cli_bypass'),
 	checkPluginStatus: function(callbackA , callbackB )
 	{	
 		this.ccpaEnabled = Boolean( Cli_Data.ccpaEnabled );
@@ -973,6 +1022,9 @@ var cliBlocker =
 				}
 			} else {
 				jQuery('.wt-cli-ccpa-opt-out,.wt-cli-ccpa-checkbox,.wt-cli-ccpa-element').remove();
+			}
+			if ( cliBlocker.isBypassEnabled === "1") {
+				cliBlocker.blockingStatus = false;
 			}
 			callbackA( this.cliShowBar );
 			callbackB( this.blockingStatus);
@@ -1006,6 +1058,32 @@ var cliBlocker =
 			jQuery('.cli-modal-backdrop').show();
 		}
 	},
+	removeCookieByCategory : function() 
+	{	
+
+		if(cliBlocker.blockingStatus === true)
+		{	
+			if(CLI_Cookie.read(CLI_ACCEPT_COOKIE_NAME) !== null)
+			{
+				var non_necessary_cookies = Cli_Data.non_necessary_cookies;
+				for (var key in non_necessary_cookies) {
+					currentCategory = key;
+					if(CLI.allowedCategories.indexOf(currentCategory) === -1)
+					{	
+						var nonNecessaryCookies = non_necessary_cookies[currentCategory];
+						for(var i=0; i < nonNecessaryCookies.length; i++)
+						{	
+							if(CLI_Cookie.read(nonNecessaryCookies[i]) !== null)
+							{	
+								CLI_Cookie.erase(nonNecessaryCookies[i]);
+							}
+
+						}
+					}
+				}
+			}
+		}
+	},
     runScripts:function( blocking )
 	{		
 		blocking = typeof blocking !== 'undefined' ? blocking : true;
@@ -1014,9 +1092,10 @@ var cliBlocker =
 		var genericFuncs = 
 		{	
 			
-			renderByElement: function()
+			renderByElement: function( callback )
 			{	
 				cliScriptFuncs.renderScripts();
+				callback();
 				cliBlocker.scriptsLoaded = true;
 			},
 
@@ -1136,7 +1215,7 @@ var cliBlocker =
 				}
 			}
 		};
-		genericFuncs.renderByElement();
+		genericFuncs.renderByElement( cliBlocker.removeCookieByCategory );
 	},
 	ccpaOptedOut : function () {
 		var ccpaOptedOut = false;

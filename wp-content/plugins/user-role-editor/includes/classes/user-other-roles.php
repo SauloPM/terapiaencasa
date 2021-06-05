@@ -18,33 +18,43 @@ class URE_User_Other_Roles {
     
         $this->lib = URE_Lib::get_instance();
         $this->set_hooks();
+
     }
     // end of $lib
     
     
     public function set_hooks() {
         
-        if (is_admin()) {
-            add_filter( 'additional_capabilities_display', array($this, 'additional_capabilities_display'), 10, 1);        
-            add_action( 'admin_print_styles-user-edit.php', array($this, 'load_css') );
-            add_action( 'admin_print_styles-user-new.php', array($this, 'load_css') );
-            add_action( 'admin_enqueue_scripts', array($this, 'load_js' ) );
-            add_action( 'edit_user_profile', array($this, 'edit_user_profile_html'), 10, 1 );
-            add_action( 'user_new_form', array($this, 'user_new_form'), 10, 1 );
-            add_action( 'profile_update', array($this, 'update'), 10 );
-        }
+        add_filter( 'additional_capabilities_display', array($this, 'additional_capabilities_display'), 10, 1);        
+        add_action( 'admin_print_styles-user-edit.php', array($this, 'load_css') );
+        add_action( 'admin_print_styles-user-new.php', array($this, 'load_css') );
+        add_action( 'admin_enqueue_scripts', array($this, 'load_js' ) );
+        add_action( 'edit_user_profile', array($this, 'edit_user_profile_html'), 10, 1 );
+        add_action( 'user_new_form', array($this, 'user_new_form'), 10, 1 );
+        add_action( 'profile_update', array($this, 'update'), 10 );
+        
         $multisite = $this->lib->get('multisite');
         if ($multisite) {          
             add_action( 'wpmu_activate_user', array($this, 'add_other_roles'), 10, 1 );
             add_action( 'added_existing_user', array($this, 'add_other_roles'), 10, 1);
         }
-        add_action( 'user_register', array($this, 'add_other_roles'), 10, 1 );
+        add_action( 'user_register', array($this, 'add_default_other_roles'), 10, 1 );
             
     }
     // end of set_hooks()
     
     
-    public function additional_capabilities_display($display) {
+    public function additional_capabilities_display( $display ) {
+        
+        $show = apply_filters('ure_show_additional_capabilities_section', true);
+        if ( empty( $show ) ) {
+            return $display;
+        }
+
+        
+        if ( !current_user_can('promote_users') ) {
+            return $display;  // No permissions to promote users
+        }
         
         $display = false;
         
@@ -59,8 +69,23 @@ class URE_User_Other_Roles {
      */
     public function load_css() {
         
+        $show = apply_filters('ure_show_additional_capabilities_section', true );
+        if ( empty( $show ) ) {
+            return;
+        }
+
+        if ( !current_user_can('promote_users') ) {
+            return;  // No permissions to promote users
+        }
+        
+        if ( defined('WP_DEBUG') && !empty( WP_DEBUG ) ) {
+            $file_name = 'multiple-select.css';
+        } else {
+            $file_name = 'multiple-select.min.css';
+        }
+        
         wp_enqueue_style('wp-jquery-ui-dialog');
-        wp_enqueue_style('ure-jquery-multiple-select', plugins_url('/css/multiple-select.css', URE_PLUGIN_FULL_PATH), array(), false, 'screen');
+        wp_enqueue_style('ure-jquery-multiple-select', plugins_url('/css/'. $file_name, URE_PLUGIN_FULL_PATH ), array(), false, 'screen');
         
     }
     // end of load_css()                
@@ -68,17 +93,31 @@ class URE_User_Other_Roles {
 
     public function load_js($hook_suffix)  {
         
-        if (!in_array($hook_suffix, array('user-edit.php', 'user-new.php'))) {
+        if ( !in_array( $hook_suffix, array('user-edit.php', 'user-new.php') ) ) {
+            return;
+        }
+
+        $show = apply_filters('ure_show_additional_capabilities_section', true );
+        if ( empty( $show ) ) {
             return;
         }
         
+        if ( !current_user_can('promote_users') ) {
+            return;  // No permissions to promote users
+        }
+        
+        if ( defined('WP_DEBUG') && !empty( WP_DEBUG ) ) {
+            $ms_file_name = 'multiple-select.js';
+        } else {
+            $ms_file_name = 'multiple-select.min.js';
+        }
         
         $select_primary_role = apply_filters('ure_users_select_primary_role', true);
         
         wp_enqueue_script('jquery-ui-dialog', '', array('jquery-ui-core', 'jquery-ui-button', 'jquery'));
-        wp_register_script('ure-jquery-multiple-select', plugins_url('/js/multiple-select.js', URE_PLUGIN_FULL_PATH));
+        wp_register_script('ure-jquery-multiple-select', plugins_url('/js/'. $ms_file_name, URE_PLUGIN_FULL_PATH ), array(), URE_VERSION );
         wp_enqueue_script('ure-jquery-multiple-select');
-        wp_register_script('ure-user-profile-other-roles', plugins_url('/js/user-profile-other-roles.js', URE_PLUGIN_FULL_PATH));
+        wp_register_script('ure-user-profile-other-roles', plugins_url('/js/user-profile-other-roles.js', URE_PLUGIN_FULL_PATH ), array(), URE_VERSION );
         wp_enqueue_script('ure-user-profile-other-roles');
         wp_localize_script('ure-user-profile-other-roles', 'ure_data_user_profile_other_roles', array(
             'wp_nonce' => wp_create_nonce('user-role-editor'),
@@ -188,12 +227,11 @@ class URE_User_Other_Roles {
     }
     // end of get_user_caps_str()
     
-    
-    
+        
     private function user_profile_capabilities($user) {
         
         $current_user_id = get_current_user_id();        
-        $user_caps = $this->get_user_caps_str($user);
+        $user_caps = $this->get_user_caps_str( $user );
 ?>
           <tr>
               <th>
@@ -202,7 +240,7 @@ class URE_User_Other_Roles {
               <td>
 <?php 
                 echo $user_caps .'<br/>'; 
-      if ($this->lib->user_is_admin($current_user_id)) {
+      if ($this->lib->user_is_admin( $current_user_id ) ) {
             echo '<a href="' . wp_nonce_url("users.php?page=users-".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . 
                  esc_html__('Edit', 'user-role-editor') . '</a>';
       }                      
@@ -257,10 +295,16 @@ class URE_User_Other_Roles {
         if (!$this->is_user_profile_extention_allowed()) {  
             return;
         }
+        
         $show = apply_filters('ure_show_additional_capabilities_section', true);
         if (empty($show)) {
             return;
         }
+        
+        if ( !current_user_can('promote_users') ) {
+            return;  // No permissions to promote users
+        }
+
 ?>
         <h3><?php esc_html_e('Additional Capabilities', 'user-role-editor'); ?></h3>
 <?php
@@ -273,6 +317,10 @@ class URE_User_Other_Roles {
         $show = apply_filters('ure_show_additional_capabilities_section', true);
         if (empty($show)) {
             return;
+        }
+
+        if ( !current_user_can('promote_users') ) {
+            return;  // No permissions to promote users
         }
         
         $user = new WP_User();
@@ -293,8 +341,8 @@ class URE_User_Other_Roles {
      */
     public function update( $user_id ) {
         
-        if ( !current_user_can('edit_users') ) {
-            return -1;  // No permissions to edit users
+        if ( !current_user_can('promote_users') ) {
+            return -1;  // No permissions to promote users
         }
         if ( !current_user_can('edit_user', $user_id) ) {
             return -1;  // No permissions to edit this user
@@ -330,14 +378,11 @@ class URE_User_Other_Roles {
     // end of update()
 
     
-    private function add_default_other_roles($user_id) {
-        if ( !current_user_can('edit_users') ) {
-            return false;
-        }
-        if ( !current_user_can('edit_user', $user_id) ) {
-            return false;
-        }
+    public function add_default_other_roles( $user_id ) {
         
+        if ( empty( $user_id ) ) {
+            return false;
+        }
         $user = get_user_by('id', $user_id );
         if ( empty( $user->ID ) ) {
             return true;

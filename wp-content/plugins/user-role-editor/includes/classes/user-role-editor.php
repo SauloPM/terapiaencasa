@@ -40,23 +40,22 @@ class User_Role_Editor {
     
     
     /**
-     * Private clone method to prevent cloning of the instance of the *Singleton* 
+     * Prevent cloning of a *Singleton* instance 
      *
      * @return void
      */
-    private function __clone() {
-        
+    public function __clone() {
+        throw new \Exception('Do not clone a singleton instance.');
     }
     // end of __clone()
     
     /**
-     * Private unserialize method to prevent unserializing of the *Singleton*
-     * instance.
+     * Prevent unserializing of a *Singleton* instance.
      *
      * @return void
      */
-    private function __wakeup() {
-        
+    public function __wakeup() {
+        throw new \Exception('Do not unserialize a singleton instance.');
     }
     // end of __wakeup()
 
@@ -211,8 +210,14 @@ class User_Role_Editor {
        
         add_action('wp_ajax_ure_ajax', array($this, 'ure_ajax'));
         
-        $sort_roles = apply_filters( 'ure_sort_wp_roles_list', false );
-        if ( $sort_roles ) {
+        // Input parameter $roles_sorting_order = false by default 
+        // Acceptable values: 
+        // true - sort by role ID (for backward compatibility),
+        // 'id' - sort roles by role ID, 
+        // 'name' -  sort roles by role name.
+        $roles_sorting_order = apply_filters( 'ure_sort_wp_roles_list', false);
+        if ( !empty( $roles_sorting_order ) ) {
+            $this->lib->set('roles_sorting_order', $roles_sorting_order );
             add_filter( 'editable_roles', array( $this, 'sort_wp_roles_list' ), 11, 1 );
         }
     }
@@ -281,7 +286,7 @@ class User_Role_Editor {
   public function add_js_to_users_page() {
               
       wp_enqueue_script('jquery-ui-dialog', '', array('jquery-ui-core','jquery-ui-button', 'jquery') );
-      wp_register_script( 'ure-users', plugins_url( '/js/users.js', URE_PLUGIN_FULL_PATH ) );
+      wp_register_script( 'ure-users', plugins_url( '/js/users.js', URE_PLUGIN_FULL_PATH ), array(), URE_VERSION );
       wp_enqueue_script ( 'ure-users' );      
       wp_localize_script( 'ure-users', 'ure_users_data', array(
         'wp_nonce' => wp_create_nonce('user-role-editor'),
@@ -698,7 +703,7 @@ class User_Role_Editor {
     
     protected function get_ure_page_url() {
 
-        $page_url = URE_WP_ADMIN_URL . URE_PARENT . '?page=users-' . URE_PLUGIN_FILE;
+        $page_url = admin_url() . URE_PARENT . '?page=users-' . URE_PLUGIN_FILE;
         $object = $this->lib->get_request_var('object', 'get');
         $user_id = (int) $this->lib->get_request_var('user_id', 'get', 'int');
         if ($object=='user' && $user_id>0) {
@@ -725,7 +730,7 @@ class User_Role_Editor {
         
         wp_enqueue_script('jquery-ui-dialog', '', array('jquery-ui-core', 'jquery-ui-button', 'jquery'));
         wp_enqueue_script('jquery-ui-selectable', '', array('jquery-ui-core', 'jquery'));
-        wp_register_script('ure', plugins_url('/js/ure.js', URE_PLUGIN_FULL_PATH));
+        wp_register_script('ure', plugins_url('/js/ure.js', URE_PLUGIN_FULL_PATH ), array(), URE_VERSION );
         wp_enqueue_script('ure');
         wp_localize_script('ure', 'ure_data', array(
             'wp_nonce' => wp_create_nonce('user-role-editor'),
@@ -773,10 +778,10 @@ class User_Role_Editor {
         wp_enqueue_script('jquery-ui-tabs', '', array('jquery-ui-core', 'jquery'));
         wp_enqueue_script('jquery-ui-dialog', '', array('jquery-ui-core', 'jquery'));
         wp_enqueue_script('jquery-ui-button', '', array('jquery-ui-core', 'jquery'));
-        wp_register_script('ure-js', plugins_url('/js/settings.js', URE_PLUGIN_FULL_PATH));
-        wp_enqueue_script('ure-js');
+        wp_register_script('ure-settings', plugins_url('/js/settings.js', URE_PLUGIN_FULL_PATH ), array(), URE_VERSION );
+        wp_enqueue_script('ure-settings');
         
-        wp_localize_script('ure-js', 'ure_data', array(
+        wp_localize_script('ure-settings', 'ure_data', array(
             'wp_nonce' => wp_create_nonce('user-role-editor'),
             'network_admin' => is_network_admin() ? 1 : 0,
             'page_url' => $page_url,
@@ -843,7 +848,17 @@ class User_Role_Editor {
      */
     public function sort_wp_roles_list( $roles ) {
         
-        ksort( $roles );
+        $roles_sorting_order = $this->lib->get('roles_sorting_order');
+        if ( $roles_sorting_order==='id' || $roles_sorting_order===true ) {
+            // sort by role ID
+            ksort( $roles );
+        } else if ( $roles_sorting_order==='name') {
+            // sort by role name
+            asort( $roles );
+        } else {    
+            // change nothing
+            return $roles;
+        }
         // wp-admin/includes/template/wp_dropdown_roles() showed roles in reversed order, #906:
         // $editable_roles = array_reverse( get_editable_roles() );
         // so we have to reverse them 1st, in order they will be reversed back to the ascending order

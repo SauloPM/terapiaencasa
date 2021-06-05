@@ -426,6 +426,7 @@ class Ai1wmue_Main_Controller {
 	public function plugin_row_meta( $links, $file ) {
 		if ( $file === AI1WMUE_PLUGIN_BASENAME ) {
 			$links[] = __( '<a href="https://help.servmask.com/knowledgebase/unlimited-extension-user-guide/" target="_blank">User Guide</a>', AI1WMUE_PLUGIN_NAME );
+			$links[] = __( '<a href="https://servmask.com/contact-support" target="_blank">Contact Support</a>', AI1WMUE_PLUGIN_NAME );
 		}
 
 		return $links;
